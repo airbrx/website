@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Airbrx - Articles</title>
+    <meta property="og:title" content="Airbrx - Articles" />
+		<meta property="og:description" content="" />
+		<meta property="og:image" content="https://airbrx.com/placeholder.jpg" />
+		<meta property='og:url' content="https://airbrx.com/articles.html"/>
+
+    <script src="/js/jquery.1.8.3.min.js"></script>
+    <script src="/js/webtools.js"></script>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mystery+Quest&display=swap" rel="stylesheet">
+    <style>
+    .article-item {
+        display: flex;
+        flex-direction: row; /* default for desktop */
+        align-items: flex-start;
+        gap: 10px;
+        margin-bottom: 15px;
+        cursor: pointer;
+        max-width: 800px;
+        text-align: left;
+    }
+
+    .article-item img {
+        width: 200px;
+        height: auto;
+        flex-shrink: 0;
+    }
+
+    .article-text {
+        flex-grow: 1;
+    }
+
+    /* Responsive behavior for smaller screens */
+    @media (max-width: 600px) {
+        .article-item {
+            flex-direction: column;
+            align-items: center; /* optional: center items for mobile */
+            text-align: center;
+        }
+
+        .article-item img {
+            width: 100%; /* full width image on small screens */
+        }
+
+        .article-text {
+            text-align: left; /* or center, depending on design preference */
+        }
+    }
+    </style>
+  </head>
+<body>
+
+  <button id="menu-toggle" aria-label="Toggle Menu">&#9776;</button>
+  <div style="width:100%">
+  <header onclick="window.location.href='/'" style="cursor:pointer">
+    <img id=logo src="/logos/logo.png">
+    <h1 id="headertitle">Airbrx</h1>
+    <p id="headerblurb">Unlocking Business Value from Your Data</p>
+  </header>
+  </div>
+    <div class="container">
+        <nav class="menu" id="menu">
+
+        </nav>
+        <main class="content">
+          <br /><br/>
+            <center><div id="articles" class="article"></div></center>
+              <div id="grid-container"></div>
+            <br />
+            <div id="submenu" style="width:100%"></div>
+        </main>
+    </div>
+    <script>
+      menu()
+      pageContent()
+    </script>
+
+    <hr>
+    <p><center>&copy; 2025 Airbrx</center></p>
+    <br />
+</body>

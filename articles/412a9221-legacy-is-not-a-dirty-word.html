@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Airbrx - Legacy Is Not a Dirty Word</title>
+    <meta property="og:title" content="Legacy Is Not a Dirty Word" />
+		<meta property="og:description" content="As architects and engineers we want to create new solutions, but from a business standpoint, it doesn't always make financial sense -- if it still makes us money, we should keep it.  But keep it safely." />
+		<meta property="og:image" content="https://airbrx.com/articleimages/ytnAz1xEfJFyjLAFBlaMFXaXU2HA3Bbe.webp" />
+		<meta property='og:url' content="https://airbrx.com/articles/412a9221-legacy-is-not-a-dirty-word.html"/>
+
+    <script src="/js/jquery.1.8.3.min.js"></script>
+    <script src="/js/webtools.js"></script>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <style>
+    </style>
+</head>
+<body>
+  <button id="menu-toggle" aria-label="Toggle Menu">&#9776;</button>
+  <header onclick="window.location.href='/'" style="cursor:pointer">
+    <img id=logo src="/logos/logo.png">
+    <h1 onclick="window.locaiton.href='/'" id="headertitle">Airbrx</h1>
+    <p id="headerblurb">Unlocking Business Value from Your Data</p>
+  </header>
+    <div class="container">
+        <nav class="menu" id="menu">
+
+        </nav>
+        <main class="content">
+              <div id="mainarticle" class="article">
+        <h2 class="articleTitle">Legacy Is Not a Dirty Word</h2>
+        <p style="font-size:smaller">Thursday, May 8, 2025<br /></p><br/>
+        <figure class="image"><img style="aspect-ratio:1600/900;" src="/articleimages/ytnAz1xEfJFyjLAFBlaMFXaXU2HA3Bbe.webp" width="1600" height="900"></figure><p>&nbsp;</p><p>I’m an architect, I like to solve problems and help create something new, something innovative.&nbsp; I can’t tell you how many “modernization” projects I’ve run, and how often it turns out the organization didn’t really need a whole modernization initiative, the team needed to figure out how to leverage the systems they already had.</p><p>&nbsp;</p><p>You see, in tech, a “legacy system” is a bad system. It’s a dead man walking, something that irritates the tech team and they would love to just get rid of, but somehow business just won’t let go of this fossil, this antiquated system that has been around for over THREE YEARS!</p><p>&nbsp;</p><p>In business, however, there is something called Fiduciary Responsibility; the business team not only wants to maximize the company’s return on investment, but is often required to do so legally. So, if you have a perfectly good system that is working, there really isn’t a strong business case to replace it.</p><p>&nbsp;</p><p>There are sometimes very good technical reasons to retire an old system (like the time my team had a Microsoft Server that hadn’t had any security updates for ten years), but, to be honest, there are lots of things that can be done to maintain older systems while still adhering to modern performance and security standards.</p><p>&nbsp;</p><h2>Define Who (or what) should see it</h2><p>One of the challenges with a legacy system is that everyone in the organization seems to have access to it.&nbsp; Over time, like an old house, different people or services end up with keys, sometimes visitors who honestly aren’t ever coming back (I found I still had access to a system 5 years after I stopped working for a company once).</p><p>&nbsp;</p><p>A regular audit of who has access to legacy systems is critical to data security and performance of that system.&nbsp; Sometimes old jobs run for YEARS in parallel with the “new” process, either because no one knew it was there, or because the team isn’t sure if it’s really needed.</p><p>&nbsp;</p><p>Modern systems need fine grained security. The business needs to control who has access through strong business processes, not just an engineer giving someone some keys.&nbsp; This sometimes requires the use of facades like an API gateway that can use the identity managed in the organization’s IDP (Identity Provider like Microsoft AD/Entre or Google Cloud) or sometimes simply updating the processes to current standards.</p><p>&nbsp;</p><p>I’m a big believer in systems like Sailpoint which allows business stakeholders to approve and audit who has access to what systems. Organizations usually think of this as something only used for people, but, honestly, services like ETL jobs or AI and ML are scooping up HUGE amounts of data, sometimes data that they shouldn’t.</p><p>&nbsp;</p><p>The solution to restricting access to that system isn’t to completely rebuild it in some new model, the solution is to know why who, and what and has access and then manage that in from a practical, business needs process.&nbsp;</p><p>&nbsp;</p><h2>Integrate it into your Data Orchestration</h2><p>Usually legacy systems exist for some sort of data input process that is difficult to change. Sometimes it’s a hardware thing that can’t be retired like old trunk lines managed by some giant conglomeration of other companies like in air travel or financial systems. Sometimes it’s regulatory and the system can only be modified with a heavy audit process.&nbsp; Sometimes it’s Mary in accounting who just refuses to change and we don’t want to make Mary angry.&nbsp;</p><p>&nbsp;</p><p>But while the system needs to remain, and often remain as the source of truth for the data it’s producing, it doesn’t need to be an island. You need to understand what parts of your legacy data are duplicates that need to be updated from other sources (say, customer contact details need to be informed by Salesforce) and which parts need to inform OTHER systems (formulae for a specific deliverable).</p><p>&nbsp;</p><p>This is all doable with triggers and incorporating functions with Apache Airflow (or even using Astronomer’s compute power with sidecars).&nbsp; While actual integration patterns may be a little different from system to system, they shouldn’t be substantially different. That is, your legacy system can trigger Airflow DAGs that become part of your big data pipeline just like modern, cloud native systems.&nbsp;</p><p>&nbsp;</p><h2>Retirement Should Be Graceful</h2><p>By securing your legacy system with best practices and integrating it into your modern data workflows, the legacy system shouldn’t require a huge effort when it finally comes time to truly remove it from your enterprise.&nbsp;&nbsp;</p><p>&nbsp;</p><p>By the time the vendor stops providing updates and patches, by the time the operating system no longer supports the dependencies your legacy application requires, by the time Mary has left the company and no one really knows how to use it anymore, the processes that the system managed are now part of other workflows, the data is now part of the enterprise data, slowly migrated to other systems, and other “sources of truth.”</p><p>&nbsp;</p><p>I’m not saying you shouldn’t be considering retiring your legacy systems, but I am saying there are ways to maximize that original investment and actually leveraging it for the entire enterprise in a way that provides more value with less effort.&nbsp;</p><p>&nbsp;</p><p>Legacy is not a dirty word, it’s an investment to be cherished.&nbsp;</p><p>&nbsp;</p>
+      </div>
+              <br />
+              <div id="author"></div>
+              <div id="spacer" style="height:20px"></div>
+              <div id="grid-container"></div>
+            <div id="submenu" style="width:100%"></div>
+        </main>
+    </div>
+    <script>
+      menu()
+    </script>
+    <hr>
+    <p><center>&copy; 2025 Airbrx | <a href="/contact.html">Contact Us</a></center></p>
+    <br />
+</body>

@@ -1,0 +1,57 @@
+{
+  "siteName": "Airbrx",
+  "siteBlurb": "Unlocking Business Value from Your Data",
+  "pages": [
+    {
+      "fileName": "index.html",
+      "pageName": "Home",
+      "pageElements": [
+        "hero"
+      ]
+    },
+    {
+      "fileName": "services.html",
+      "pageName": "Services",
+      "pageElements": []
+    },
+    {
+      "fileName": "team.html",
+      "pageName": "About",
+      "pageElements": []
+    },
+    {
+      "fileName": "articles.html",
+      "pageName": "Articles",
+      "pageElements": [
+        "articleindex"
+      ]
+    },
+    {
+      "fileName": "error.html",
+      "pageName": "Error",
+      "pageElements": [
+        "article"
+      ]
+    }
+  ],
+  "fonts": {
+    "fontfamily": "Arial, sans-serif",
+    "fontUrl": ""
+  },
+  "colorsDefault": {
+    "bgcolor": "#f2f2f2",
+    "textcolor": "#505050",
+    "menubg": "#fd6c1d",
+    "boxbg": "#fff",
+    "highlight": "#A0A0A0",
+    "wallpaper": "url('/img/wallpaper.jpg')"
+  },
+  "colorsDarkMode": {
+    "bgcolor": "#f2f2f2",
+    "textcolor": "#505050",
+    "menubg": "#fd6c1d",
+    "boxbg": "#fff",
+    "highlight": "#A0A0A0",
+    "wallpaper": "url('/img/wallpaper-dark.jpg')"
+  }
+}

@@ -1,0 +1,60 @@
+[
+  {
+    "slug": "412a9221-legacy-is-not-a-dirty-word",
+    "articleTitle": "Legacy Is Not a Dirty Word",
+    "bioId": "62e05210-4206-4cb4-8e2f-64490b36a6ec",
+    "articleBlurb": "As architects and engineers we want to create new solutions, but from a business standpoint, it doesn't always make financial sense -- if it still makes us money, we should keep it.  But keep it safely.",
+    "tags": [
+      "Tech Dives"
+    ],
+    "modified": 1746807766,
+    "published": 1746737400,
+    "images": [
+      "/articleimages/ytnAz1xEfJFyjLAFBlaMFXaXU2HA3Bbe.webp"
+    ],
+    "created": 1746807766
+  },
+  {
+    "slug": "b2bba085-airflow-3-data-orchestration-evolves-to-business-orchestration",
+    "articleTitle": "Airflow 3: Data Orchestration Evolves to Business Orchestration",
+    "bioId": "",
+    "articleBlurb": "Airflow 3 was officially launched today, and it has some exciting new features, but Airflow 3 isn’t just the next version — it’s a pivot point that turns Airflow into a Business Orchestration tool, not just a data pipeline",
+    "tags": [
+      "Tech Dives"
+    ],
+    "modified": 1746737336,
+    "published": 1745435100,
+    "images": [
+      "/articleimages/6zM486pdPzNH8QwRjz73UXL1dOhpzRba.webp"
+    ],
+    "created": 1746737336
+  },
+  {
+    "slug": "385ce2f0-beyond-silos-the-strategic-advantage-of-a-modern-lakehouse",
+    "articleTitle": "Beyond Silos: The Strategic Advantage of a Modern Lakehouse",
+    "articleBlurb": "While the idea of big data has been around since the 1990s, the tools and practices for how to manage big data continue to evolve, and in the past few years a number of technologies and conventions have come together to create what we call the Data Lakehouse. This primer gives you a look at the differences between traditional Data Lake+Warehouse architecture and a true Data Lakehouse. ",
+    "tags": [
+      "Tech Dives"
+    ],
+    "modified": 1744906774,
+    "published": 1744831200,
+    "images": [
+      "/articleimages/E7Pej66j6OL6D4etv37hFY52FNfmYtPq.webp"
+    ],
+    "created": 1744906774
+  },
+  {
+    "slug": "686c418c-why-we-started-airbrx",
+    "articleTitle": "Why We Started Airbrx",
+    "articleBlurb": "AI has changed the game. A lot of the mechanics of building software are getting easier. But that just makes experience, context and domain expertise even more valuable. In this environment, the advantage doesn’t go to whoever builds the most — it goes to whoever understands what to build, why, and how it will drive the business forward.",
+    "tags": [
+      "Airbrx"
+    ],
+    "modified": 1744831179,
+    "published": 1744300380,
+    "images": [
+      "/articleimages/1d9c38t6B94p4qvdd9oREUNNGnzRy6pk.webp"
+    ],
+    "created": 1744831179
+  }
+]

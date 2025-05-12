@@ -1,0 +1,18 @@
+[
+  {
+    "bioId" : "62e05210-4206-4cb4-8e2f-64490b36a6ec",
+    "name" : "Michael Bissell",
+    "title": "CTO",
+    "image" : "/assets/team/michael-bissell.png",
+    "bio" : "As the former API Evangelist for Silicon Valley Bank, and the head of Global Training for Apigee, Michael has had the unique opportunity to design solutions and build and run delivery teams to modernize complex legacy systems for a wildly diverse range of blue-chip and startup companies alike. He is hyper-focused on pragmatic solutions that are scalable, future-proof and secure.",
+    "linkedIn": "https://www.linkedin.com/in/bissellator/"
+  },
+  {
+    "bioId" : "f18d5ca9-b919-41a8-acd3-3d36bfed0961",
+    "name" : "Ben Tallman",
+    "title" : "CEO",
+    "image" : "/team/ben-tallman.png",
+    "bio" : "Passionate about transforming businesses through data-driven strategies, Benjamin excels at building high-performing teams and cultivating strong industry relationships. His track record at M Science, Apigee and WaveQ demonstrates an exceptional ability to translate strategic vision into tangible outcomes, consistently delivering significant financial returns and operational efficiencies.",
+    "linkedIn": "https://www.linkedin.com/in/btallman/"
+  }
+]

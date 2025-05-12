@@ -1,0 +1,702 @@
+[
+  {
+    "object": {
+      "posted": "2025-04-10T17:47:44.347Z",
+      "blurb": "",
+      "tags": "",
+      "category": "",
+      "orderby": 0,
+      "title": ""
+    },
+    "objectID": "/articleimages/1d9c38t6B94p4qvdd9oREUNNGnzRy6pk.webp",
+    "created": "",
+    "modified": "2025-05-09T16:22:29.186Z",
+    "checksum": "88ae4502"
+  },
+  {
+    "object": {
+      "posted": "2025-04-23T19:01:17.513Z",
+      "blurb": "",
+      "tags": "",
+      "category": "",
+      "orderby": 0,
+      "title": ""
+    },
+    "objectID": "/articleimages/6zM486pdPzNH8QwRjz73UXL1dOhpzRba.webp",
+    "created": "",
+    "modified": "2025-05-09T16:22:29.186Z",
+    "checksum": "ef1f65df"
+  },
+  {
+    "object": {
+      "posted": "2025-04-17T14:37:10.611Z",
+      "blurb": "",
+      "tags": "",
+      "category": "",
+      "orderby": 0,
+      "title": ""
+    },
+    "objectID": "/articleimages/E7Pej66j6OL6D4etv37hFY52FNfmYtPq.webp",
+    "created": "",
+    "modified": "2025-05-09T16:22:29.186Z",
+    "checksum": "b5d3af6f"
+  },
+  {
+    "object": {
+      "posted": "2025-04-10T17:47:44.347Z",
+      "blurb": "",
+      "tags": "",
+      "category": "",
+      "orderby": 0,
+      "title": ""
+    },
+    "objectID": "/articleimages/thumbs/1d9c38t6B94p4qvdd9oREUNNGnzRy6pk.webp",
+    "created": "",
+    "modified": "2025-05-09T16:22:29.186Z",
+    "checksum": "c6d8206"
+  },
+  {
+    "object": {
+      "posted": "2025-04-23T19:01:17.513Z",
+      "blurb": "",
+      "tags": "",
+      "category": "",
+      "orderby": 0,
+      "title": ""
+    },
+    "objectID": "/articleimages/thumbs/6zM486pdPzNH8QwRjz73UXL1dOhpzRba.webp",
+    "created": "",
+    "modified": "2025-05-09T16:22:29.186Z",
+    "checksum": "a17dc92e"
+  },
+  {
+    "object": {
+      "posted": "2025-04-17T14:37:10.611Z",
+      "blurb": "",
+      "tags": "",
+      "category": "",
+      "orderby": 0,
+      "title": ""
+    },
+    "objectID": "/articleimages/thumbs/E7Pej66j6OL6D4etv37hFY52FNfmYtPq.webp",
+    "created": "",
+    "modified": "2025-05-09T16:22:29.186Z",
+    "checksum": "b1a2bef1"
+  },
+  {
+    "object": {
+      "posted": "2025-05-08T21:41:10.820Z",
+      "blurb": "",
+      "tags": "",
+      "category": "",
+      "orderby": 0,
+      "title": ""
+    },
+    "objectID": "/articleimages/thumbs/ytnAz1xEfJFyjLAFBlaMFXaXU2HA3Bbe.webp",
+    "created": "",
+    "modified": "2025-05-09T16:22:29.186Z",
+    "checksum": "6ebd719"
+  },
+  {
+    "object": {
+      "posted": "2025-05-08T21:41:10.820Z",
+      "blurb": "",
+      "tags": "",
+      "category": "",
+      "orderby": 0,
+      "title": ""
+    },
+    "objectID": "/articleimages/ytnAz1xEfJFyjLAFBlaMFXaXU2HA3Bbe.webp",
+    "created": "",
+    "modified": "2025-05-09T16:22:29.186Z",
+    "checksum": "ea67b84b"
+  },
+  {
+    "object": {
+      "posted": "2025-04-17T14:37:10.611Z",
+      "blurb": "",
+      "tags": "",
+      "category": "",
+      "orderby": 0,
+      "title": ""
+    },
+    "objectID": "/articles/385ce2f0-beyond-silos-the-strategic-advantage-of-a-modern-lakehouse.html",
+    "created": "",
+    "modified": "2025-05-09T16:22:29.186Z",
+    "checksum": "e5f3d857"
+  },
+  {
+    "object": {
+      "posted": "2025-04-17T14:37:10.611Z",
+      "blurb": "",
+      "tags": "",
+      "category": "",
+      "orderby": 0,
+      "title": ""
+    },
+    "objectID": "/articles/385ce2f0-beyond-silos-the-strategic-advantage-of-a-modern-lakehouse.json",
+    "created": "",
+    "modified": "2025-05-09T16:22:29.186Z",
+    "checksum": "af3b19d9"
+  },
+  {
+    "object": {
+      "posted": "2025-05-08T21:41:10.820Z",
+      "blurb": "",
+      "tags": "",
+      "category": "",
+      "orderby": 0,
+      "title": ""
+    },
+    "objectID": "/articles/412a9221-legacy-is-not-a-dirty-word.html",
+    "created": "",
+    "modified": "2025-05-09T16:22:29.186Z",
+    "checksum": "13983e9e"
+  },
+  {
+    "object": {
+      "posted": "2025-05-08T21:41:10.820Z",
+      "blurb": "",
+      "tags": "",
+      "category": "",
+      "orderby": 0,
+      "title": ""
+    },
+    "objectID": "/articles/412a9221-legacy-is-not-a-dirty-word.json",
+    "created": "",
+    "modified": "2025-05-09T16:22:29.186Z",
+    "checksum": "77ecefb3"
+  },
+  {
+    "object": {
+      "posted": "2025-04-10T17:47:44.347Z",
+      "blurb": "",
+      "tags": "",
+      "category": "",
+      "orderby": 0,
+      "title": ""
+    },
+    "objectID": "/articles/686c418c-why-we-started-airbrx.html",
+    "created": "",
+    "modified": "2025-05-09T16:22:29.186Z",
+    "checksum": "4838f855"
+  },
+  {
+    "object": {
+      "posted": "2025-04-10T17:47:44.347Z",
+      "blurb": "",
+      "tags": "",
+      "category": "",
+      "orderby": 0,
+      "title": ""
+    },
+    "objectID": "/articles/686c418c-why-we-started-airbrx.json",
+    "created": "",
+    "modified": "2025-05-09T16:22:29.186Z",
+    "checksum": "8ab3c0c9"
+  },
+  {
+    "object": {
+      "posted": "2025-03-19T17:40:12.692Z",
+      "blurb": "",
+      "tags": "",
+      "category": "",
+      "orderby": 0,
+      "title": ""
+    },
+    "objectID": "/articles/articles.json",
+    "created": "",
+    "modified": "2025-05-09T16:22:29.186Z",
+    "checksum": "75610c1"
+  },
+  {
+    "object": {
+      "posted": "2025-04-23T19:01:17.513Z",
+      "blurb": "",
+      "tags": "",
+      "category": "",
+      "orderby": 0,
+      "title": ""
+    },
+    "objectID": "/articles/b2bba085-airflow-3-data-orchestration-evolves-to-business-orchestration.html",
+    "created": "",
+    "modified": "2025-05-09T16:22:29.186Z",
+    "checksum": "a2f2dee1"
+  },
+  {
+    "object": {
+      "posted": "2025-04-23T19:01:17.513Z",
+      "blurb": "",
+      "tags": "",
+      "category": "",
+      "orderby": 0,
+      "title": ""
+    },
+    "objectID": "/articles/b2bba085-airflow-3-data-orchestration-evolves-to-business-orchestration.json",
+    "created": "",
+    "modified": "2025-05-09T16:22:29.186Z",
+    "checksum": "9cde5051"
+  },
+  {
+    "object": {
+      "posted": "2025-04-10T00:42:56.111Z",
+      "blurb": "",
+      "tags": "",
+      "category": "",
+      "orderby": 0,
+      "title": ""
+    },
+    "objectID": "/articles.html",
+    "created": "",
+    "modified": "2025-05-09T16:22:29.186Z",
+    "checksum": "6d7ca057"
+  },
+  {
+    "object": {
+      "posted": "2025-03-19T22:19:18.162Z",
+      "blurb": "",
+      "tags": "",
+      "category": "",
+      "orderby": 0,
+      "title": ""
+    },
+    "objectID": "/assets/hero/hero.png",
+    "created": "",
+    "modified": "2025-05-09T16:22:29.186Z",
+    "checksum": "b2da153c"
+  },
+  {
+    "object": {
+      "posted": "2025-04-10T00:42:56.111Z",
+      "blurb": "",
+      "tags": "",
+      "category": "",
+      "orderby": 0,
+      "title": ""
+    },
+    "objectID": "/assets/placeholder.webp",
+    "created": "",
+    "modified": "2025-05-09T16:22:29.186Z",
+    "checksum": "f2c7d5f5"
+  },
+  {
+    "object": {
+      "posted": "2025-04-10T00:42:56.111Z",
+      "blurb": "",
+      "tags": "",
+      "category": "",
+      "orderby": 0,
+      "title": ""
+    },
+    "objectID": "/assets/sidebar.png",
+    "created": "",
+    "modified": "2025-05-09T16:22:29.186Z",
+    "checksum": "38eb4afc"
+  },
+  {
+    "object": {
+      "posted": "2025-03-19T22:19:18.162Z",
+      "blurb": "",
+      "tags": "",
+      "category": "",
+      "orderby": 0,
+      "title": ""
+    },
+    "objectID": "/assets/team/amit-beria.png",
+    "created": "",
+    "modified": "2025-05-09T16:22:29.186Z",
+    "checksum": "1b3ad5a"
+  },
+  {
+    "object": {
+      "posted": "2025-03-19T22:19:18.162Z",
+      "blurb": "",
+      "tags": "",
+      "category": "",
+      "orderby": 0,
+      "title": ""
+    },
+    "objectID": "/assets/team/ben-tallman.png",
+    "created": "",
+    "modified": "2025-05-09T16:22:29.186Z",
+    "checksum": "3ee4cd6e"
+  },
+  {
+    "object": {
+      "posted": "2025-03-19T22:19:18.162Z",
+      "blurb": "",
+      "tags": "",
+      "category": "",
+      "orderby": 0,
+      "title": ""
+    },
+    "objectID": "/assets/team/michael-bissell.png",
+    "created": "",
+    "modified": "2025-05-09T16:22:29.186Z",
+    "checksum": "c01d040c"
+  },
+  {
+    "object": {
+      "posted": "2025-03-19T22:19:18.162Z",
+      "blurb": "",
+      "tags": "",
+      "category": "",
+      "orderby": 0,
+      "title": ""
+    },
+    "objectID": "/assets/team/stephen-shannon.png",
+    "created": "",
+    "modified": "2025-05-09T16:22:29.186Z",
+    "checksum": "d505f7a9"
+  },
+  {
+    "object": {
+      "posted": "2025-05-08T21:41:10.820Z",
+      "blurb": "",
+      "tags": "",
+      "category": "",
+      "orderby": 0,
+      "title": ""
+    },
+    "objectID": "/bios.json",
+    "created": "",
+    "modified": "2025-05-09T16:22:29.186Z",
+    "checksum": "254f179"
+  },
+  {
+    "object": {
+      "posted": "2025-04-29T16:40:10.603Z",
+      "blurb": "",
+      "tags": "",
+      "category": "",
+      "orderby": 0,
+      "title": ""
+    },
+    "objectID": "/branding.html",
+    "created": "",
+    "modified": "2025-05-09T16:22:29.186Z",
+    "checksum": "87b00ecd"
+  },
+  {
+    "object": {
+      "posted": "2025-03-25T21:20:54.762Z",
+      "blurb": "",
+      "tags": "",
+      "category": "",
+      "orderby": 0,
+      "title": ""
+    },
+    "objectID": "/contact.html",
+    "created": "",
+    "modified": "2025-05-09T16:22:29.186Z",
+    "checksum": "1d43e303"
+  },
+  {
+    "object": {
+      "posted": "2025-03-23T15:19:15.327Z",
+      "blurb": "",
+      "tags": "",
+      "category": "",
+      "orderby": 0,
+      "title": ""
+    },
+    "objectID": "/css/font-awesome.min.css",
+    "created": "",
+    "modified": "2025-05-09T16:22:29.186Z",
+    "checksum": "43aba7eb"
+  },
+  {
+    "object": {
+      "posted": "2025-03-19T17:40:12.692Z",
+      "blurb": "",
+      "tags": "",
+      "category": "",
+      "orderby": 0,
+      "title": ""
+    },
+    "objectID": "/css/style.css",
+    "created": "",
+    "modified": "2025-05-09T16:22:29.186Z",
+    "checksum": "e355aa9"
+  },
+  {
+    "object": {
+      "posted": "2025-03-19T17:40:12.692Z",
+      "blurb": "",
+      "tags": "",
+      "category": "",
+      "orderby": 0,
+      "title": ""
+    },
+    "objectID": "/error.html",
+    "created": "",
+    "modified": "2025-05-09T16:22:29.186Z",
+    "checksum": "e8c0c775"
+  },
+  {
+    "object": {
+      "posted": "2025-03-19T17:40:12.692Z",
+      "blurb": "",
+      "tags": "",
+      "category": "",
+      "orderby": 0,
+      "title": ""
+    },
+    "objectID": "/favicon.ico",
+    "created": "",
+    "modified": "2025-05-09T16:22:29.186Z",
+    "checksum": "75b1ec7b"
+  },
+  {
+    "object": {
+      "posted": "2025-03-23T15:19:15.327Z",
+      "blurb": "",
+      "tags": "",
+      "category": "",
+      "orderby": 0,
+      "title": ""
+    },
+    "objectID": "/fonts/fontawesome-webfont.eot",
+    "created": "",
+    "modified": "2025-05-09T16:22:29.186Z",
+    "checksum": "ba1d704f"
+  },
+  {
+    "object": {
+      "posted": "2025-03-23T15:19:15.327Z",
+      "blurb": "",
+      "tags": "",
+      "category": "",
+      "orderby": 0,
+      "title": ""
+    },
+    "objectID": "/fonts/fontawesome-webfont.svg",
+    "created": "",
+    "modified": "2025-05-09T16:22:29.186Z",
+    "checksum": "5f3bf1ae"
+  },
+  {
+    "object": {
+      "posted": "2025-03-23T15:19:15.327Z",
+      "blurb": "",
+      "tags": "",
+      "category": "",
+      "orderby": 0,
+      "title": ""
+    },
+    "objectID": "/fonts/fontawesome-webfont.ttf",
+    "created": "",
+    "modified": "2025-05-09T16:22:29.186Z",
+    "checksum": "c544bc5c"
+  },
+  {
+    "object": {
+      "posted": "2025-03-23T15:19:15.327Z",
+      "blurb": "",
+      "tags": "",
+      "category": "",
+      "orderby": 0,
+      "title": ""
+    },
+    "objectID": "/fonts/fontawesome-webfont.woff",
+    "created": "",
+    "modified": "2025-05-09T16:22:29.186Z",
+    "checksum": "e07b3318"
+  },
+  {
+    "object": {
+      "posted": "2025-03-23T15:19:15.327Z",
+      "blurb": "",
+      "tags": "",
+      "category": "",
+      "orderby": 0,
+      "title": ""
+    },
+    "objectID": "/fonts/fontawesome-webfont.woff2",
+    "created": "",
+    "modified": "2025-05-09T16:22:29.186Z",
+    "checksum": "5517c3a7"
+  },
+  {
+    "object": {
+      "posted": "2025-04-10T17:47:44.347Z",
+      "blurb": "",
+      "tags": "",
+      "category": "",
+      "orderby": 0,
+      "title": ""
+    },
+    "objectID": "/google1531e1d243af1f03.html",
+    "created": "",
+    "modified": "2025-05-09T16:22:29.186Z",
+    "checksum": "8d2c7b85"
+  },
+  {
+    "object": {
+      "posted": "2025-03-19T17:40:12.692Z",
+      "blurb": "",
+      "tags": "",
+      "category": "",
+      "orderby": 0,
+      "title": ""
+    },
+    "objectID": "/index.html",
+    "created": "",
+    "modified": "2025-05-09T16:22:29.186Z",
+    "checksum": "269f6620"
+  },
+  {
+    "object": {
+      "posted": "2025-03-21T16:22:18.325Z",
+      "blurb": "",
+      "tags": "",
+      "category": "",
+      "orderby": 0,
+      "title": ""
+    },
+    "objectID": "/js/conf.json",
+    "created": "",
+    "modified": "2025-05-09T16:22:29.186Z",
+    "checksum": "9d26db67"
+  },
+  {
+    "object": {
+      "posted": "2025-03-19T17:40:12.692Z",
+      "blurb": "",
+      "tags": "",
+      "category": "",
+      "orderby": 0,
+      "title": ""
+    },
+    "objectID": "/js/jquery.1.8.3.min.js",
+    "created": "",
+    "modified": "2025-05-09T16:22:29.186Z",
+    "checksum": "a522094d"
+  },
+  {
+    "object": {
+      "posted": "2025-03-19T17:40:12.692Z",
+      "blurb": "",
+      "tags": "",
+      "category": "",
+      "orderby": 0,
+      "title": ""
+    },
+    "objectID": "/js/webtools.js",
+    "created": "",
+    "modified": "2025-05-09T16:22:29.186Z",
+    "checksum": "1cafd16f"
+  },
+  {
+    "object": {
+      "posted": "2025-03-19T17:40:12.692Z",
+      "blurb": "",
+      "tags": "",
+      "category": "",
+      "orderby": 0,
+      "title": ""
+    },
+    "objectID": "/logos/logo-square.png",
+    "created": "",
+    "modified": "2025-05-09T16:22:29.186Z",
+    "checksum": "7d8555be"
+  },
+  {
+    "object": {
+      "posted": "2025-03-19T17:40:12.692Z",
+      "blurb": "",
+      "tags": "",
+      "category": "",
+      "orderby": 0,
+      "title": ""
+    },
+    "objectID": "/logos/logo.png",
+    "created": "",
+    "modified": "2025-05-09T16:22:29.186Z",
+    "checksum": "46447f6c"
+  },
+  {
+    "object": {
+      "posted": "2025-03-19T17:40:12.692Z",
+      "blurb": "",
+      "tags": "",
+      "category": "",
+      "orderby": 0,
+      "title": ""
+    },
+    "objectID": "/placeholder.jpg",
+    "created": "",
+    "modified": "2025-05-09T16:22:29.186Z",
+    "checksum": "7d8555be"
+  },
+  {
+    "object": {
+      "posted": "2025-03-19T22:19:18.162Z",
+      "blurb": "",
+      "tags": "",
+      "category": "",
+      "orderby": 0,
+      "title": ""
+    },
+    "objectID": "/services.html",
+    "created": "",
+    "modified": "2025-05-09T16:22:29.186Z",
+    "checksum": "56733956"
+  },
+  {
+    "object": {
+      "posted": "2025-03-19T17:40:12.692Z",
+      "blurb": "",
+      "tags": "",
+      "category": "",
+      "orderby": 0,
+      "title": ""
+    },
+    "objectID": "/sitedata.json",
+    "created": "",
+    "modified": "2025-05-09T16:22:29.186Z",
+    "checksum": "97f2706d"
+  },
+  {
+    "object": {
+      "posted": "2025-04-10T00:42:56.111Z",
+      "blurb": "",
+      "tags": "",
+      "category": "",
+      "orderby": 0,
+      "title": ""
+    },
+    "objectID": "/sitemap.xml",
+    "created": "",
+    "modified": "2025-05-09T16:22:29.186Z",
+    "checksum": "4f743c1"
+  },
+  {
+    "object": {
+      "posted": "2025-03-19T17:40:12.692Z",
+      "blurb": "",
+      "tags": "",
+      "category": "",
+      "orderby": 0,
+      "title": ""
+    },
+    "objectID": "/tags.json",
+    "created": "",
+    "modified": "2025-05-09T16:22:29.186Z",
+    "checksum": "c789a202"
+  },
+  {
+    "object": {
+      "posted": "2025-03-19T22:19:18.162Z",
+      "blurb": "",
+      "tags": "",
+      "category": "",
+      "orderby": 0,
+      "title": ""
+    },
+    "objectID": "/team.html",
+    "created": "",
+    "modified": "2025-05-09T16:22:29.186Z",
+    "checksum": "36fbb41e"
+  }
+]
