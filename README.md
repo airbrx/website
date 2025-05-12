@@ -24,4 +24,4 @@ We understand that leveraging managed platforms like Astronomer and Databricks l
 * **Build Strategic Value:**  
 We see a clear demand for a consultancy that not only provides technical expertise but also enables businesses to strategically leverage their data assets.
 
-[Contatct us](https://airbrix.com) to learn more. 
+[Contatct us](https://airbrx.com/contact.html) to learn more. 
