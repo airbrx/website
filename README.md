@@ -16,7 +16,7 @@ When there is no reason to add extra libraries, more compute power and complex o
 Our mission is to empower organizations through outcome-driven Data Lakehouse solutions, enabling businesses to innovate, simplify data management, and maximize ROI.
 
 * **Address the Liability of Non-Strategic Infrastructure:**  
-We see companies expending significant effort managing complex Spark and Airflow deployments, distracting them from their ability to focus on data analysis and business outcomes.
+We see companies expending significant effort managing complex Spark and Airflow deployments, distracting them from their ability to focus on data analysis and business outcomes.
 
 * **Harness the Power of Managed Platforms:**  
 We understand that leveraging managed platforms like Astronomer and Databricks liberate businesses from infrastructure management, allowing them to concentrate on their core competencies.
