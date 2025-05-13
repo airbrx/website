@@ -1,0 +1,105 @@
+[
+  {
+    "entityId": "f13e90fc-6480-4602-96a5-87b89df4fdf1",
+    "title": "Google Ads API",
+    "description": "Source of truth for how many impressions, clicks and actions occurred in the campaign",
+    "connectors": [
+      "41be65b2-f919-4f22-a6d6-208b74fc51a4"
+    ]
+  },
+  {
+    "entityId": "41be65b2-f919-4f22-a6d6-208b74fc51a4",
+    "title": "Google Ad Sync Script",
+    "description": "A C# function that runs from Azure Functions to grab data from Goolge on a scheduled task",
+    "connectors": [
+      "f13e90fc-6480-4602-96a5-87b89df4fdf1",
+      "0a9d8643-2e0a-4ed8-a8ef-6ed4141cfc2c",
+      "06bf4651-a515-4eec-a5cf-1f87b31c2944"
+    ]
+  },
+  {
+    "entityId": "0dc55217-df58-414a-bbae-04edc2614463",
+    "title": "Databricks",
+    "description": "Central Data Platform",
+    "connectors": [
+      "325d0e50-67cb-43b3-8c1e-3ab243908ce6",
+      "5f4774a6-b5f9-49b3-910a-1a9d79afd8e6"
+    ]
+  },
+  {
+    "entityId": "325d0e50-67cb-43b3-8c1e-3ab243908ce6",
+    "title": "Azure Lake Storage",
+    "description": "Raw data storage for unsturctured data to be consumed by Databricks",
+    "connectors": [
+      "a17bf4e8-5998-49a0-b264-0a913079e14c",
+      "0dc55217-df58-414a-bbae-04edc2614463"
+    ]
+  },
+  {
+    "entityId": "a17bf4e8-5998-49a0-b264-0a913079e14c",
+    "title": "Message broker",
+    "description": "Microsoft Service Bus to route data from functions to storage",
+    "connectors": [
+      "325d0e50-67cb-43b3-8c1e-3ab243908ce6",
+      "0a9d8643-2e0a-4ed8-a8ef-6ed4141cfc2c"
+    ]
+  },
+  {
+    "entityId": "18565956-10e9-4e03-ba88-ceff7bbb5c27",
+    "title": "Facebook Ads API",
+    "description": "Source of truth for Facebook data",
+    "connectors": [
+      "be699761-3b71-4663-a0df-b266804b3e80"
+    ]
+  },
+  {
+    "entityId": "be699761-3b71-4663-a0df-b266804b3e80",
+    "title": "Facebook Ad Collector App",
+    "description": "A C# function that pulls the data from Facebook on a scheduled task",
+    "connectors": [
+      "18565956-10e9-4e03-ba88-ceff7bbb5c27",
+      "0a9d8643-2e0a-4ed8-a8ef-6ed4141cfc2c",
+      "06bf4651-a515-4eec-a5cf-1f87b31c2944"
+    ]
+  },
+  {
+    "entityId": "0a9d8643-2e0a-4ed8-a8ef-6ed4141cfc2c",
+    "title": "API Gateway",
+    "description": "Central Data Access controller before data is released to lake storage. Common poliies such as PII scanner, malformed data formats, illegal characters, and code injections are processed here",
+    "connectors": [
+      "a17bf4e8-5998-49a0-b264-0a913079e14c",
+      "be699761-3b71-4663-a0df-b266804b3e80",
+      "41be65b2-f919-4f22-a6d6-208b74fc51a4",
+      "06bf4651-a515-4eec-a5cf-1f87b31c2944"
+    ]
+  },
+  {
+    "entityId": "5f4774a6-b5f9-49b3-910a-1a9d79afd8e6",
+    "title": "Chargbee Updater",
+    "description": "Custom function to pull data from databricks and update customer interactions ",
+    "connectors": [
+      "0dc55217-df58-414a-bbae-04edc2614463",
+      "06bf4651-a515-4eec-a5cf-1f87b31c2944",
+      "6d9225c0-74f8-4abe-a938-53a7d3702d69"
+    ]
+  },
+  {
+    "entityId": "06bf4651-a515-4eec-a5cf-1f87b31c2944",
+    "title": "Vault",
+    "description": "Secrets and Key Store",
+    "connectors": [
+      "41be65b2-f919-4f22-a6d6-208b74fc51a4",
+      "0a9d8643-2e0a-4ed8-a8ef-6ed4141cfc2c",
+      "5f4774a6-b5f9-49b3-910a-1a9d79afd8e6",
+      "be699761-3b71-4663-a0df-b266804b3e80"
+    ]
+  },
+  {
+    "entityId": "6d9225c0-74f8-4abe-a938-53a7d3702d69",
+    "title": "Chargebee",
+    "description": "Subscription management service that bills clients",
+    "connectors": [
+      "5f4774a6-b5f9-49b3-910a-1a9d79afd8e6"
+    ]
+  }
+]

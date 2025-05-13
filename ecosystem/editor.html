@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Block JSON Editor</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; }
+    .block-list { margin-bottom: 20px; }
+    .block-item { border: 1px solid #ccc; padding: 10px; margin: 5px 0; cursor: pointer; background: #f9f9f9; border-radius: 4px; }
+    .editor { border: 1px solid #666; padding: 15px; background: #f0f0f0; margin-bottom: 20px; display: none; }
+    .editor input, .editor textarea, .editor select { display: block; margin-bottom: 10px; width: 100%; }
+    .editor label { margin-top: 10px; font-weight: bold; }
+    .editor .connector-list { margin-bottom: 10px; }
+    #jsonOutput { width: 100%; height: 300px; }
+    .btn-danger { background-color: #e74c3c; color: white; border: none; padding: 8px 12px; margin-top: 10px; cursor: pointer; }
+    .btn-danger:hover { background-color: #c0392b; }
+    .btn-primary { background-color: #3498db; color: white; border: none; padding: 8px 12px; cursor: pointer; }
+    .btn-primary:hover { background-color: #2980b9; }
+  </style>
+</head>
+<body>
+
+<h2>Blocks</h2>
+<button id="addBlock" class="btn-primary">+ Add New Block</button>
+<div class="block-list" id="blockList"></div>
+
+<div class="editor" id="blockEditor">
+  <h3>Editing Block</h3>
+  <label>Entity ID: <input id="editEntityId" readonly></label>
+  <label>Title: <input id="editTitle"></label>
+  <label>Description: <textarea id="editDescription"></textarea></label>
+  <label>Add Connector:
+    <select id="addConnector"></select>
+    <button id="addConnectorBtn" class="btn-primary">Add</button>
+  </label>
+  <div class="connector-list" id="connectorList"></div>
+  <button id="saveChanges" class="btn-primary">Save</button>
+  <button id="cancelEdit">Cancel</button>
+  <button id="deleteBlock" class="btn-danger">Delete Block</button>
+</div>
+
+<h3>Live JSON</h3>
+<textarea id="jsonOutput" readonly></textarea>
+
+<script>
+  let data = [
+    {
+      "entityId": "f13e90fc-6480-4602-96a5-87b89df4fdf1",
+      "title": "Google Ads API",
+      "description": "Source of truth for how many impressions, clicks and actions occurred in the campaign",
+      "connectors" : [
+        "41be65b2-f919-4f22-a6d6-208b74fc51a4"
+      ]
+    },
+    {
+      "entityId": "41be65b2-f919-4f22-a6d6-208b74fc51a4",
+      "title": "Google Ad Sync Script",
+      "description": "A C# function that runs from Azure Functions to grab data from Goolge on a scheduled task",
+      "connectors" : [
+        "f13e90fc-6480-4602-96a5-87b89df4fdf1"
+      ]
+    },
+    {
+      "entityId": "0dc55217-df58-414a-bbae-04edc2614463",
+      "title": "Databricks",
+      "description": "Central Data Platform",
+      "connectors" : [
+      ]
+    }
+  ]
+
+
+  let currentEditIndex = null;
+
+  function generateUUID() {
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+      const r = Math.random() * 16 | 0, v = c === 'x' ? r : (r & 0x3 | 0x8);
+      return v.toString(16);
+    });
+  }
+
+  function renderBlockList() {
+    const $list = $('#blockList').empty();
+    data.forEach((block, index) => {
+      const connectors = block.connectors.map(connId => {
+        const connBlock = data.find(b => b.entityId === connId);
+        return connBlock ? connBlock.title : connId;
+      }).join(', ');
+      $list.append(`
+        <div class="block-item" data-index="${index}">
+          <strong>${block.title}</strong><br>
+          ${block.description}<br>
+          <em>Connectors:</em> ${connectors || 'None'}
+        </div>
+      `);
+    });
+  }
+
+  function updateJSON() {
+    $('#jsonOutput').val(JSON.stringify(data, null, 2));
+  }
+
+  function populateEditor(index) {
+    currentEditIndex = index;
+    const block = data[index];
+    $('#editEntityId').val(block.entityId);
+    $('#editTitle').val(block.title);
+    $('#editDescription').val(block.description);
+    renderConnectorList(block);
+    populateConnectorDropdown(block.entityId);
+    $('#blockEditor').show();
+  }
+
+  function renderConnectorList(block) {
+    const $clist = $('#connectorList').empty();
+    block.connectors.forEach(connId => {
+      const title = data.find(b => b.entityId === connId)?.title || connId;
+      $clist.append(`<div>${title} <button class="remove-connector" data-id="${connId}">Remove</button></div>`);
+    });
+  }
+
+  function populateConnectorDropdown(excludeId) {
+    const $select = $('#addConnector').empty();
+    data.forEach(b => {
+      if (b.entityId !== excludeId) {
+        $select.append(`<option value="${b.entityId}">${b.title}</option>`);
+      }
+    });
+  }
+
+  $(document).on('click', '.block-item', function () {
+    const index = $(this).data('index');
+    populateEditor(index);
+  });
+
+  $('#addConnectorBtn').on('click', function () {
+    const selectedId = $('#addConnector').val();
+    if (!selectedId) return;
+
+    const currentBlock = data[currentEditIndex];
+    const targetBlock = data.find(b => b.entityId === selectedId);
+
+    if (!currentBlock.connectors.includes(selectedId)) {
+      currentBlock.connectors.push(selectedId);
+    }
+
+    if (!targetBlock.connectors.includes(currentBlock.entityId)) {
+      targetBlock.connectors.push(currentBlock.entityId);
+    }
+
+    renderConnectorList(currentBlock);
+    updateJSON();
+    renderBlockList();
+  });
+
+  $(document).on('click', '.remove-connector', function () {
+    const connId = $(this).data('id');
+    const currentBlock = data[currentEditIndex];
+    const targetBlock = data.find(b => b.entityId === connId);
+
+    currentBlock.connectors = currentBlock.connectors.filter(id => id !== connId);
+    if (targetBlock) {
+      targetBlock.connectors = targetBlock.connectors.filter(id => id !== currentBlock.entityId);
+    }
+
+    renderConnectorList(currentBlock);
+    updateJSON();
+    renderBlockList();
+  });
+
+  $('#saveChanges').on('click', function () {
+    const block = data[currentEditIndex];
+    block.title = $('#editTitle').val();
+    block.description = $('#editDescription').val();
+    updateJSON();
+    renderBlockList();
+    $('#blockEditor').hide();
+  });
+
+  $('#cancelEdit').on('click', function () {
+    $('#blockEditor').hide();
+    currentEditIndex = null;
+  });
+
+  $('#deleteBlock').on('click', function () {
+    if (currentEditIndex !== null) {
+      const deletedId = data[currentEditIndex].entityId;
+      data.splice(currentEditIndex, 1);
+
+      // Clean up all references to the deleted block
+      data.forEach(b => {
+        b.connectors = b.connectors.filter(conn => conn !== deletedId);
+      });
+
+      $('#blockEditor').hide();
+      currentEditIndex = null;
+      renderBlockList();
+      updateJSON();
+    }
+  });
+
+  $('#addBlock').on('click', function () {
+    const newBlock = {
+      entityId: generateUUID(),
+      title: "New Block",
+      description: "",
+      connectors: []
+    };
+    data.push(newBlock);
+    const newIndex = data.length - 1;
+    renderBlockList();
+    updateJSON();
+    populateEditor(newIndex);
+  });
+
+  renderBlockList();
+  updateJSON();
+</script>
+
+</body>
+</html>
