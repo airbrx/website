@@ -1,105 +1,187 @@
 [
   {
-    "entityId": "f13e90fc-6480-4602-96a5-87b89df4fdf1",
-    "title": "Google Ads API",
-    "description": "Source of truth for how many impressions, clicks and actions occurred in the campaign",
+    "entityId": "67eb586a-fedf-4976-bf02-039802293278",
+    "title": "Google Api",
+    "description": "Google Api component in the system",
     "connectors": [
-      "41be65b2-f919-4f22-a6d6-208b74fc51a4"
+      "701bec62-afa0-4333-a512-8a54b1d3b932"
+    ],
+    "workflows": [
+      "c213692c-37a7-40ab-9328-edb74fee30e5",
+      "74728c6c-714d-4036-82a9-b23169228dfb"
     ]
   },
   {
-    "entityId": "41be65b2-f919-4f22-a6d6-208b74fc51a4",
-    "title": "Google Ad Sync Script",
-    "description": "A C# function that runs from Azure Functions to grab data from Goolge on a scheduled task",
+    "entityId": "701bec62-afa0-4333-a512-8a54b1d3b932",
+    "title": "Custom C# App",
+    "description": "Custom C# App component in the system",
     "connectors": [
-      "f13e90fc-6480-4602-96a5-87b89df4fdf1",
-      "0a9d8643-2e0a-4ed8-a8ef-6ed4141cfc2c",
-      "06bf4651-a515-4eec-a5cf-1f87b31c2944"
+      "67eb586a-fedf-4976-bf02-039802293278",
+      "11c17229-7022-4915-820c-4d27a9e54c07"
+    ],
+    "workflows": [
+      "c213692c-37a7-40ab-9328-edb74fee30e5",
+      "74728c6c-714d-4036-82a9-b23169228dfb"
     ]
   },
   {
-    "entityId": "0dc55217-df58-414a-bbae-04edc2614463",
-    "title": "Databricks",
-    "description": "Central Data Platform",
-    "connectors": [
-      "325d0e50-67cb-43b3-8c1e-3ab243908ce6",
-      "5f4774a6-b5f9-49b3-910a-1a9d79afd8e6"
-    ]
-  },
-  {
-    "entityId": "325d0e50-67cb-43b3-8c1e-3ab243908ce6",
-    "title": "Azure Lake Storage",
-    "description": "Raw data storage for unsturctured data to be consumed by Databricks",
-    "connectors": [
-      "a17bf4e8-5998-49a0-b264-0a913079e14c",
-      "0dc55217-df58-414a-bbae-04edc2614463"
-    ]
-  },
-  {
-    "entityId": "a17bf4e8-5998-49a0-b264-0a913079e14c",
-    "title": "Message broker",
-    "description": "Microsoft Service Bus to route data from functions to storage",
-    "connectors": [
-      "325d0e50-67cb-43b3-8c1e-3ab243908ce6",
-      "0a9d8643-2e0a-4ed8-a8ef-6ed4141cfc2c"
-    ]
-  },
-  {
-    "entityId": "18565956-10e9-4e03-ba88-ceff7bbb5c27",
-    "title": "Facebook Ads API",
-    "description": "Source of truth for Facebook data",
-    "connectors": [
-      "be699761-3b71-4663-a0df-b266804b3e80"
-    ]
-  },
-  {
-    "entityId": "be699761-3b71-4663-a0df-b266804b3e80",
-    "title": "Facebook Ad Collector App",
-    "description": "A C# function that pulls the data from Facebook on a scheduled task",
-    "connectors": [
-      "18565956-10e9-4e03-ba88-ceff7bbb5c27",
-      "0a9d8643-2e0a-4ed8-a8ef-6ed4141cfc2c",
-      "06bf4651-a515-4eec-a5cf-1f87b31c2944"
-    ]
-  },
-  {
-    "entityId": "0a9d8643-2e0a-4ed8-a8ef-6ed4141cfc2c",
+    "entityId": "11c17229-7022-4915-820c-4d27a9e54c07",
     "title": "API Gateway",
-    "description": "Central Data Access controller before data is released to lake storage. Common poliies such as PII scanner, malformed data formats, illegal characters, and code injections are processed here",
+    "description": "API Gateway component in the system",
     "connectors": [
-      "a17bf4e8-5998-49a0-b264-0a913079e14c",
-      "be699761-3b71-4663-a0df-b266804b3e80",
-      "41be65b2-f919-4f22-a6d6-208b74fc51a4",
-      "06bf4651-a515-4eec-a5cf-1f87b31c2944"
+      "701bec62-afa0-4333-a512-8a54b1d3b932",
+      "cf12fbab-850d-4200-8150-a15a6655cc82",
+      "03fbf33e-aff4-4395-85c7-f65fbaa61490",
+      "c2d51ab5-fd6e-4a88-9f14-111dd7d9110a",
+      "de059f9c-a2c2-4c9c-9de5-a79ef0dff524",
+      "8ce39b38-f5d8-4aaf-935b-dfd3447f58bd"
+    ],
+    "workflows": [
+      "c213692c-37a7-40ab-9328-edb74fee30e5",
+      "74728c6c-714d-4036-82a9-b23169228dfb"
     ]
   },
   {
-    "entityId": "5f4774a6-b5f9-49b3-910a-1a9d79afd8e6",
-    "title": "Chargbee Updater",
-    "description": "Custom function to pull data from databricks and update customer interactions ",
+    "entityId": "8ce39b38-f5d8-4aaf-935b-dfd3447f58bd",
+    "title": "Service Bus",
+    "description": "Service Bus component in the system",
     "connectors": [
-      "0dc55217-df58-414a-bbae-04edc2614463",
-      "06bf4651-a515-4eec-a5cf-1f87b31c2944",
-      "6d9225c0-74f8-4abe-a938-53a7d3702d69"
+      "11c17229-7022-4915-820c-4d27a9e54c07",
+      "3452506e-c6aa-4652-bc70-0277d3b71258"
+    ],
+    "workflows": [
+      "c213692c-37a7-40ab-9328-edb74fee30e5",
+      "74728c6c-714d-4036-82a9-b23169228dfb"
     ]
   },
   {
-    "entityId": "06bf4651-a515-4eec-a5cf-1f87b31c2944",
-    "title": "Vault",
-    "description": "Secrets and Key Store",
+    "entityId": "c2d51ab5-fd6e-4a88-9f14-111dd7d9110a",
+    "title": "IDP",
+    "description": "IDP component in the system",
     "connectors": [
-      "41be65b2-f919-4f22-a6d6-208b74fc51a4",
-      "0a9d8643-2e0a-4ed8-a8ef-6ed4141cfc2c",
-      "5f4774a6-b5f9-49b3-910a-1a9d79afd8e6",
-      "be699761-3b71-4663-a0df-b266804b3e80"
+      "11c17229-7022-4915-820c-4d27a9e54c07"
+    ],
+    "workflows": [
+      "c213692c-37a7-40ab-9328-edb74fee30e5",
+      "74728c6c-714d-4036-82a9-b23169228dfb"
     ]
   },
   {
-    "entityId": "6d9225c0-74f8-4abe-a938-53a7d3702d69",
-    "title": "Chargebee",
-    "description": "Subscription management service that bills clients",
+    "entityId": "3452506e-c6aa-4652-bc70-0277d3b71258",
+    "title": "Lake Storage",
+    "description": "Lake Storage component in the system",
     "connectors": [
-      "5f4774a6-b5f9-49b3-910a-1a9d79afd8e6"
+      "bcb5cb03-9c40-4995-bd5d-f0375311f050",
+      "8ce39b38-f5d8-4aaf-935b-dfd3447f58bd"
+    ],
+    "workflows": [
+      "c213692c-37a7-40ab-9328-edb74fee30e5",
+      "74728c6c-714d-4036-82a9-b23169228dfb"
+    ]
+  },
+  {
+    "entityId": "bcb5cb03-9c40-4995-bd5d-f0375311f050",
+    "title": "Databricks",
+    "description": "Databricks component in the system",
+    "connectors": [
+      "22a098be-ae1e-49d1-ac8a-d77cdcb5e2d0",
+      "0080feab-c68c-4423-85f2-98068fb5d4d1",
+      "3452506e-c6aa-4652-bc70-0277d3b71258"
+    ],
+    "workflows": [
+      "c213692c-37a7-40ab-9328-edb74fee30e5",
+      "74728c6c-714d-4036-82a9-b23169228dfb"
+    ]
+  },
+  {
+    "entityId": "22a098be-ae1e-49d1-ac8a-d77cdcb5e2d0",
+    "title": "Customer Success BI",
+    "description": "Customer Success BI component in the system",
+    "connectors": [
+      "bcb5cb03-9c40-4995-bd5d-f0375311f050"
+    ],
+    "workflows": [
+      "c213692c-37a7-40ab-9328-edb74fee30e5"
+    ]
+  },
+  {
+    "entityId": "7284e066-9b5a-446a-bf9a-4bb955448886",
+    "title": "Facebook API",
+    "description": "Facebook API component in the system",
+    "connectors": [
+      "cf12fbab-850d-4200-8150-a15a6655cc82"
+    ],
+    "workflows": [
+      "74728c6c-714d-4036-82a9-b23169228dfb"
+    ]
+  },
+  {
+    "entityId": "cf12fbab-850d-4200-8150-a15a6655cc82",
+    "title": "Custom Facebook App",
+    "description": "Custom Facebook App component in the system",
+    "connectors": [
+      "7284e066-9b5a-446a-bf9a-4bb955448886",
+      "11c17229-7022-4915-820c-4d27a9e54c07"
+    ],
+    "workflows": [
+      "74728c6c-714d-4036-82a9-b23169228dfb"
+    ]
+  },
+  {
+    "entityId": "9451cbaf-1581-40f9-a450-74f68cb5a0e5",
+    "title": "Amazon API",
+    "description": "Amazon API component in the system",
+    "connectors": [
+      "de059f9c-a2c2-4c9c-9de5-a79ef0dff524"
+    ],
+    "workflows": [
+      "74728c6c-714d-4036-82a9-b23169228dfb"
+    ]
+  },
+  {
+    "entityId": "de059f9c-a2c2-4c9c-9de5-a79ef0dff524",
+    "title": "Custom Amazon App",
+    "description": "Custom Amazon App component in the system",
+    "connectors": [
+      "9451cbaf-1581-40f9-a450-74f68cb5a0e5",
+      "11c17229-7022-4915-820c-4d27a9e54c07"
+    ],
+    "workflows": [
+      "74728c6c-714d-4036-82a9-b23169228dfb"
+    ]
+  },
+  {
+    "entityId": "7e8a9754-5058-4d76-a5f6-3fcc854008b1",
+    "title": "Microsoft API",
+    "description": "Microsoft API component in the system",
+    "connectors": [
+      "03fbf33e-aff4-4395-85c7-f65fbaa61490"
+    ],
+    "workflows": [
+      "74728c6c-714d-4036-82a9-b23169228dfb"
+    ]
+  },
+  {
+    "entityId": "03fbf33e-aff4-4395-85c7-f65fbaa61490",
+    "title": "Custom Microsoft App",
+    "description": "Custom Microsoft App component in the system",
+    "connectors": [
+      "7e8a9754-5058-4d76-a5f6-3fcc854008b1",
+      "11c17229-7022-4915-820c-4d27a9e54c07"
+    ],
+    "workflows": [
+      "74728c6c-714d-4036-82a9-b23169228dfb"
+    ]
+  },
+  {
+    "entityId": "0080feab-c68c-4423-85f2-98068fb5d4d1",
+    "title": "Sales Team Sharepoint",
+    "description": "Sales Team Sharepoint component in the system",
+    "connectors": [
+      "bcb5cb03-9c40-4995-bd5d-f0375311f050"
+    ],
+    "workflows": [
+      "74728c6c-714d-4036-82a9-b23169228dfb"
     ]
   }
 ]
