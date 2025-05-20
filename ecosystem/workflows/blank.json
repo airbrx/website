@@ -1,0 +1,23 @@
+{
+  "title": "Starter Template",
+  "description": "This is just a blank template",
+  "ecosystem":[
+    {
+      "entityId": "0080feab-c68c-4423-85f2-98068fb5d4d1",
+      "title": "Default Entity",
+      "description": "this is a placeholder for a process or system that gets consumed during a data flow",
+      "connectors": [
+      ],
+      "workflows": [
+      ]
+    }
+
+],
+"workflows":[
+  {
+    "workflowId": "74728c6c-714d-4036-82a9-b23169228dfb",
+    "workflowName": "Default Workflow",
+    "owner": "Michael"
+  }
+]
+}

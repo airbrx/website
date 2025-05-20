@@ -5,6 +5,8 @@
   <title>Entity Relationships Wireframe</title>
   <script src="https://d3js.org/d3.v7.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/uuid/8.3.2/uuid.min.js"></script>
+  <script src="/js/jquery.1.8.3.min.js"></script>
+
 
   <style>
     html, body {
@@ -54,7 +56,6 @@
     <button onclick="addEntity()">➕ Add Entity</button><br />
     <button onclick="showAddWorkflow()">➕ Add Workflow</button><br><br>
     <button onclick="showJSON('ecosystem')">View Ecosystem JSON</button>
-    <button onclick="showJSON('workflows')">View Workflows JSON</button>
     <hr />
     <button onclick="refreshFromJson()">Load custom JSON</button>
     <button onclick="refreshFromFile()">Reset to Default Template</button>
@@ -93,28 +94,55 @@
 <div id="uploadJsonModal" class="modal">
 </div>
 
-  <!-- Additional Modals unchanged... -->
 
   <script>
-    let ecosystemData = [], workflows = [];
-    const svg = d3.select("svg"), width = window.innerWidth, height = window.innerHeight, maxTextWidth = 140;
-
+    let ecosystemData = [], workflows = [], ecoMeta = {};
     let currentViewMode = 'all'; // 'all' or 'connected'
     let selectedEntityId = null;
 
-    Promise.all([
-      d3.json("ecosystem.json"),
-      d3.json("workflows.json")
-    ]).then(([ecoDefault, flowsDefault]) => {
-      const localEco = localStorage.getItem("ecosystemData");
-      const localFlows = localStorage.getItem("workflows");
-
-      ecosystemData = localEco ? JSON.parse(localEco) : ecoDefault;
-      workflows = localFlows ? JSON.parse(localFlows) : flowsDefault;
-
-      buildWorkflowMenu();
-      renderWireframe();
+    const params = new Proxy(new URLSearchParams(window.location.search), {
+      get: (searchParams, prop) => searchParams.get(prop),
     });
+    let projectId = 'workflows/ecosystem.json'
+    if (params.project)  {
+      projectId = 'workflows/' + params.project
+    }
+    if (params.project)  {
+      $.when(
+        $.getJSON(projectId)
+      ).done(function(ecoDefault) {
+        ecosystemData = ecoDefault.ecosystem;
+        workflows = ecoDefault.workflows;
+        ecoMeta.title = ecoDefault.title
+        ecoMeta.description = ecoDefault.description
+
+        localStorage.setItem("ecosystemData", JSON.stringify(ecosystemData));
+        localStorage.setItem("workflows", JSON.stringify(workflows));
+
+        buildWorkflowMenu();
+        renderWireframe();
+      });
+    }
+    else {
+      Promise.all([
+        d3.json(projectId),
+      ]).then(([ecoDefault]) => {
+        const localEco = localStorage.getItem("ecosystemData");
+        const localFlows = localStorage.getItem("workflows");
+
+        ecosystemData = localEco ? JSON.parse(localEco) : ecoDefault.ecosystem;
+        workflows = localFlows ? JSON.parse(localFlows) : ecoDefault.workflows;
+        ecoMeta.title = ecoDefault.title
+        ecoMeta.description = ecoDefault.description
+
+        buildWorkflowMenu();
+        renderWireframe();
+      });
+
+    }
+    const svg = d3.select("svg"), width = window.innerWidth, height = window.innerHeight, maxTextWidth = 140;
+
+    console.log(projectId)
 
     function buildWorkflowMenu() {
       const ul = document.getElementById("workflowList");
@@ -158,7 +186,7 @@
       const simulation = d3.forceSimulation(nodes)
         .force("link", d3.forceLink(links).id(d => d.entityId).distance(200))
         .force("charge", d3.forceManyBody().strength(-500))
-        .force("center", d3.forceCenter((width - 250) / 2 - 150, height / 2))
+        .force("center", d3.forceCenter(width / 2, height / 2))
         .force("collide", d3.forceCollide(100));
 
       const link = svg.append("g").selectAll("line").data(links).join("line").attr("class", "link");
@@ -240,7 +268,7 @@
               .attr("xmlns", "http://www.w3.org/1999/xhtml")
               .style("box-sizing", "border-box")  // ← This is key!
               .style("width", `${foWidth}px`)
-              .style("padding", "8px")
+              .style("padding", "10px")
               .style("background", "#f2f2f2")
               .style("border", "1px solid #505050")
               .style("border-radius", "8px")
@@ -249,8 +277,13 @@
               .style("cursor", "default")
               .style("z-index", 10000)
               .html(`
-                ${d.description}
-                <span style="float: right; cursor: pointer;" id="edit-${d.entityId}">✏️</span>
+                ${d.description}<br />
+                <span style="float: right; cursor: pointer;" id="edit-${d.entityId}">
+                  [edit]
+               </span>
+               <Br/>
+               <Br/>
+
               `);
 
             // Use timeout to let the browser render before measuring
@@ -335,15 +368,48 @@
       const index = ecosystemData.findIndex(e => e.entityId === id);
       if (index === -1) return;
 
+      const oldConnectors = ecosystemData[index].connectors || [];
+
+      const newConnectors = Array.from(
+        document.querySelectorAll('#editConnectors input:checked')
+      ).map(cb => cb.value);
+
       const updatedEntity = {
         entityId: id,
         title: document.getElementById('editTitle').value,
         description: document.getElementById('editDescription').value,
-        connectors: Array.from(document.querySelectorAll('#editConnectors input:checked')).map(cb => cb.value),
-        workflows: Array.from(document.querySelectorAll('#editWorkflows input:checked')).map(cb => cb.value)
+        connectors: newConnectors,
+        workflows: Array.from(
+          document.querySelectorAll('#editWorkflows input:checked')
+        ).map(cb => cb.value)
       };
 
       ecosystemData[index] = updatedEntity;
+
+      // Set of IDs for faster lookup
+      const oldSet = new Set(oldConnectors);
+      const newSet = new Set(newConnectors);
+
+      // Add this entity to the other entity's connectors if it's newly added
+      for (const targetId of newConnectors) {
+        if (!oldSet.has(targetId)) {
+          const target = ecosystemData.find(e => e.entityId === targetId);
+          if (target && !target.connectors.includes(id)) {
+            target.connectors.push(id);
+          }
+        }
+      }
+
+      // Remove this entity from entities no longer connected
+      for (const previousTargetId of oldConnectors) {
+        if (!newSet.has(previousTargetId)) {
+          const target = ecosystemData.find(e => e.entityId === previousTargetId);
+          if (target) {
+            target.connectors = target.connectors.filter(connId => connId !== id);
+          }
+        }
+      }
+
       document.getElementById('editEntityModal').style.display = 'none';
       renderWireframe();
     }
@@ -373,7 +439,6 @@
 
     function showJSON(type) {
       const content = document.getElementById("jsonContent");
-      if (type === 'ecosystem') {
         const cleanEcosystem = ecosystemData.map(e => ({
           entityId: e.entityId,
           title: e.title,
@@ -381,29 +446,37 @@
           connectors: Array.isArray(e.connectors) ? e.connectors : [],
           workflows: Array.isArray(e.workflows) ? e.workflows : []
         }));
-        content.textContent = JSON.stringify(cleanEcosystem, null, 2);
-      } else {
         const cleanWorkflows = workflows.map(w => ({
           workflowId: w.workflowId,
           workflowName: w.workflowName,
           owner: w.owner
         }));
-        content.textContent = JSON.stringify(cleanWorkflows, null, 2);
-      }
+        let tmp = {
+          title: ecoMeta.title,
+          description: ecoMeta.description,
+          ecosystem: cleanEcosystem,
+          workflows: cleanWorkflows
+        }
+        content.textContent = JSON.stringify(tmp, null, 2);
       document.getElementById("jsonModal").style.display = 'block';
     }
 
     function refreshFromFile() {
       if (confirm("Are you sure you want to discard your local changes and refresh from the default template?")) {
-        Promise.all([
-          d3.json("ecosystem.json"),
-          d3.json("workflows.json")
-        ]).then(([eco, flows]) => {
-          ecosystemData = eco;
-          workflows = flows;
+        $.when(
+          $.getJSON(projectId)
+        ).done(function(ecoDefault) {
+                    ecosystemData = ecoDefault.ecosystem;
+          workflows = ecoDefault.workflows;
+
+          localStorage.setItem("ecosystemData", JSON.stringify(ecosystemData));
+          localStorage.setItem("workflows", JSON.stringify(workflows));
+
           buildWorkflowMenu();
           renderWireframe();
         });
+
+
       }
     }
 
@@ -415,7 +488,35 @@
     }
 
     function refreshFromJson() {
-      // optional: keep or re-add your original implementation
+      document.getElementById('uploadJsonModal').style.display = 'block';
+      document.getElementById('uploadJsonModal').innerHTML=`
+        <span class="close" onclick="document.getElementById('uploadJsonModal').style.display='none'">&times;</span><Br />
+        <div style="width:100%;padding:20px">
+          <B>Paste your JSON here</b><br/>
+          <textarea id="customJson" style="width:80%;height:400px"></textarea><br />
+          <button onclick="uploadJson()">Upload</button>
+        </div>
+      `
+    }
+
+    function uploadJson() {
+      let jsontxt = document.getElementById('customJson').value
+      try {
+        let jsondata = JSON.parse(jsontxt)
+        if (jsondata.ecosystem[0].entityId) {
+          ecosystemData = jsondata.ecosystem
+        }
+        if (jsondata.workflows[0].workflowId) {
+          workflows = jsondata.workflows
+        }
+        buildWorkflowMenu();
+        renderWireframe();
+        document.getElementById('uploadJsonModal').style.display = 'none';
+      }
+      catch(err) {
+        alert('Invalid or unrecognized JSON payload' + err)
+        console.log(err)
+      }
     }
 
     function showEditEntityModal(entity) {
@@ -445,6 +546,16 @@
       });
     }
 
+    function copyTextToClibpoard(divId) {
+      let text = document.getElementById(divId).innerHTML
+      navigator.clipboard.writeText(text)
+        .then(() => {
+          alert("Text copied to clipboard");
+        })
+        .catch(err => {
+          alert("Failed to copy text: ", err);
+        });
+    }
 
   </script>
 </body>

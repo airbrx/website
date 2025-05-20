@@ -1,0 +1,205 @@
+{
+  "title": "Modern Chaos",
+  "description": "This is a mess... we need to explain why",
+  "ecosystem" :
+  [
+    {
+      "entityId": "67eb586a-fedf-4976-bf02-039802293278",
+      "title": "Google Api",
+      "description": "Google Api component in the system",
+      "connectors": [
+        "701bec62-afa0-4333-a512-8a54b1d3b932"
+      ],
+      "workflows": [
+        "c213692c-37a7-40ab-9328-edb74fee30e5",
+        "74728c6c-714d-4036-82a9-b23169228dfb"
+      ]
+    },
+    {
+      "entityId": "701bec62-afa0-4333-a512-8a54b1d3b932",
+      "title": "Custom C# App",
+      "description": "Custom C# App component in the system",
+      "connectors": [
+        "67eb586a-fedf-4976-bf02-039802293278",
+        "11c17229-7022-4915-820c-4d27a9e54c07"
+      ],
+      "workflows": [
+        "c213692c-37a7-40ab-9328-edb74fee30e5",
+        "74728c6c-714d-4036-82a9-b23169228dfb"
+      ]
+    },
+    {
+      "entityId": "11c17229-7022-4915-820c-4d27a9e54c07",
+      "title": "API Gateway",
+      "description": "API Gateway component in the system",
+      "connectors": [
+        "701bec62-afa0-4333-a512-8a54b1d3b932",
+        "cf12fbab-850d-4200-8150-a15a6655cc82",
+        "03fbf33e-aff4-4395-85c7-f65fbaa61490",
+        "c2d51ab5-fd6e-4a88-9f14-111dd7d9110a",
+        "de059f9c-a2c2-4c9c-9de5-a79ef0dff524",
+        "8ce39b38-f5d8-4aaf-935b-dfd3447f58bd"
+      ],
+      "workflows": [
+        "c213692c-37a7-40ab-9328-edb74fee30e5",
+        "74728c6c-714d-4036-82a9-b23169228dfb"
+      ]
+    },
+    {
+      "entityId": "8ce39b38-f5d8-4aaf-935b-dfd3447f58bd",
+      "title": "Service Bus",
+      "description": "Service Bus component in the system",
+      "connectors": [
+        "11c17229-7022-4915-820c-4d27a9e54c07",
+        "3452506e-c6aa-4652-bc70-0277d3b71258"
+      ],
+      "workflows": [
+        "c213692c-37a7-40ab-9328-edb74fee30e5",
+        "74728c6c-714d-4036-82a9-b23169228dfb"
+      ]
+    },
+    {
+      "entityId": "c2d51ab5-fd6e-4a88-9f14-111dd7d9110a",
+      "title": "IDP",
+      "description": "IDP component in the system",
+      "connectors": [
+        "11c17229-7022-4915-820c-4d27a9e54c07"
+      ],
+      "workflows": [
+        "c213692c-37a7-40ab-9328-edb74fee30e5",
+        "74728c6c-714d-4036-82a9-b23169228dfb"
+      ]
+    },
+    {
+      "entityId": "3452506e-c6aa-4652-bc70-0277d3b71258",
+      "title": "Lake Storage",
+      "description": "Lake Storage component in the system",
+      "connectors": [
+        "bcb5cb03-9c40-4995-bd5d-f0375311f050",
+        "8ce39b38-f5d8-4aaf-935b-dfd3447f58bd"
+      ],
+      "workflows": [
+        "c213692c-37a7-40ab-9328-edb74fee30e5",
+        "74728c6c-714d-4036-82a9-b23169228dfb"
+      ]
+    },
+    {
+      "entityId": "bcb5cb03-9c40-4995-bd5d-f0375311f050",
+      "title": "Databricks",
+      "description": "Databricks component in the system",
+      "connectors": [
+        "22a098be-ae1e-49d1-ac8a-d77cdcb5e2d0",
+        "0080feab-c68c-4423-85f2-98068fb5d4d1",
+        "3452506e-c6aa-4652-bc70-0277d3b71258"
+      ],
+      "workflows": [
+        "c213692c-37a7-40ab-9328-edb74fee30e5",
+        "74728c6c-714d-4036-82a9-b23169228dfb"
+      ]
+    },
+    {
+      "entityId": "22a098be-ae1e-49d1-ac8a-d77cdcb5e2d0",
+      "title": "Customer Success BI",
+      "description": "Customer Success BI component in the system",
+      "connectors": [
+        "bcb5cb03-9c40-4995-bd5d-f0375311f050"
+      ],
+      "workflows": [
+        "c213692c-37a7-40ab-9328-edb74fee30e5"
+      ]
+    },
+    {
+      "entityId": "7284e066-9b5a-446a-bf9a-4bb955448886",
+      "title": "Facebook API",
+      "description": "Facebook API component in the system",
+      "connectors": [
+        "cf12fbab-850d-4200-8150-a15a6655cc82"
+      ],
+      "workflows": [
+        "74728c6c-714d-4036-82a9-b23169228dfb"
+      ]
+    },
+    {
+      "entityId": "cf12fbab-850d-4200-8150-a15a6655cc82",
+      "title": "Custom Facebook App",
+      "description": "Custom Facebook App component in the system",
+      "connectors": [
+        "7284e066-9b5a-446a-bf9a-4bb955448886",
+        "11c17229-7022-4915-820c-4d27a9e54c07"
+      ],
+      "workflows": [
+        "74728c6c-714d-4036-82a9-b23169228dfb"
+      ]
+    },
+    {
+      "entityId": "9451cbaf-1581-40f9-a450-74f68cb5a0e5",
+      "title": "Amazon API",
+      "description": "Amazon API component in the system",
+      "connectors": [
+        "de059f9c-a2c2-4c9c-9de5-a79ef0dff524"
+      ],
+      "workflows": [
+        "74728c6c-714d-4036-82a9-b23169228dfb"
+      ]
+    },
+    {
+      "entityId": "de059f9c-a2c2-4c9c-9de5-a79ef0dff524",
+      "title": "Custom Amazon App",
+      "description": "Custom Amazon App component in the system",
+      "connectors": [
+        "9451cbaf-1581-40f9-a450-74f68cb5a0e5",
+        "11c17229-7022-4915-820c-4d27a9e54c07"
+      ],
+      "workflows": [
+        "74728c6c-714d-4036-82a9-b23169228dfb"
+      ]
+    },
+    {
+      "entityId": "7e8a9754-5058-4d76-a5f6-3fcc854008b1",
+      "title": "Microsoft API",
+      "description": "Microsoft API component in the system",
+      "connectors": [
+        "03fbf33e-aff4-4395-85c7-f65fbaa61490"
+      ],
+      "workflows": [
+        "74728c6c-714d-4036-82a9-b23169228dfb"
+      ]
+    },
+    {
+      "entityId": "03fbf33e-aff4-4395-85c7-f65fbaa61490",
+      "title": "Custom Microsoft App",
+      "description": "Custom Microsoft App component in the system",
+      "connectors": [
+        "7e8a9754-5058-4d76-a5f6-3fcc854008b1",
+        "11c17229-7022-4915-820c-4d27a9e54c07"
+      ],
+      "workflows": [
+        "74728c6c-714d-4036-82a9-b23169228dfb"
+      ]
+    },
+    {
+      "entityId": "0080feab-c68c-4423-85f2-98068fb5d4d1",
+      "title": "Sales Team Sharepoint",
+      "description": "Sales Team Sharepoint component in the system",
+      "connectors": [
+        "bcb5cb03-9c40-4995-bd5d-f0375311f050"
+      ],
+      "workflows": [
+        "74728c6c-714d-4036-82a9-b23169228dfb"
+      ]
+    }
+  ],
+"workflows" :
+  [
+    {
+      "workflowId": "c213692c-37a7-40ab-9328-edb74fee30e5",
+      "workflowName": "Ad Spend",
+      "owner": "Michael"
+    },
+    {
+      "workflowId": "74728c6c-714d-4036-82a9-b23169228dfb",
+      "workflowName": "Sales Leaderboard",
+      "owner": "Michael"
+    }
+  ]
+}

@@ -72,21 +72,44 @@
 
 <script>
 let data = [], workflows = [];
+let projectId = 'workflows/ecosystem.json'
 
-Promise.all([
-  d3.json("ecosystem.json"),
-  d3.json("workflows.json")
-]).then(([ecoDefault, flowsDefault]) => {
-  const localEco = localStorage.getItem("ecosystemData");
-  const localFlows = localStorage.getItem("workflows");
-  data = localEco ? JSON.parse(localEco) : ecoDefault;
-  workflows = localFlows ? JSON.parse(localFlows) : flowsDefault;
-
-  renderBlockList();
-  updateJSON();
-
+const params = new Proxy(new URLSearchParams(window.location.search), {
+  get: (searchParams, prop) => searchParams.get(prop),
 });
+if (params.project)  {
+  projectId = 'workflows/' + params.project
+}
+if (params.project)  {
+  $.when(
+    $.getJSON(projectId)
+  ).done(function(ecoDefault) {
+    ecosystemData = ecoDefault.ecosystem;
+    data = ecosystemData;
+    workflows = ecoDefault.workflows;
 
+    localStorage.setItem("ecosystemData", JSON.stringify(ecosystemData));
+    localStorage.setItem("workflows", JSON.stringify(workflows));
+
+    renderBlockList();
+    updateJSON();
+  });
+}
+else {
+  $.when(
+    $.getJSON(projectId)
+  ).done(function(ecoDefault) {
+    ecosystemData = ecoDefault.ecosystem;
+    data = ecosystemData;
+    workflows = ecoDefault.workflows;
+
+    localStorage.setItem("ecosystemData", JSON.stringify(ecosystemData));
+    localStorage.setItem("workflows", JSON.stringify(workflows));
+
+    renderBlockList();
+    updateJSON();
+  });
+}
 
   let currentEditIndex = null;
 
@@ -115,9 +138,26 @@ Promise.all([
   }
 
   function updateJSON() {
-    $('#jsonOutput').val(JSON.stringify(data, null, 2));
-    localStorage.setItem("ecosystemData", JSON.stringify(data));
-    localStorage.setItem("workflows", JSON.stringify(workflows));
+    const cleanEcosystem = ecosystemData.map(e => ({
+      entityId: e.entityId,
+      title: e.title,
+      description: e.description,
+      connectors: Array.isArray(e.connectors) ? e.connectors : [],
+      workflows: Array.isArray(e.workflows) ? e.workflows : []
+    }));
+    const cleanWorkflows = workflows.map(w => ({
+      workflowId: w.workflowId,
+      workflowName: w.workflowName,
+      owner: w.owner
+    }));
+    let tmp = {
+      ecosystem: cleanEcosystem,
+      workflows: cleanWorkflows
+    }
+    $('#jsonOutput').val(JSON.stringify(tmp, null, 2));
+    console.log(tmp)
+    localStorage.setItem("ecosystemData", JSON.stringify(tmp.ecosystem));
+    localStorage.setItem("workflows", JSON.stringify(tmp.workflows));
 
   }
 
