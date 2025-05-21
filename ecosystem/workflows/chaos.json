@@ -1,142 +1,19 @@
 {
   "title": "Modern Chaos",
-  "description": "Imagine a modern digital ad agency that manages the spending of thousands of customers.  This organization needs to provide up-to-date information from the big ad platforms (Google, Bing, Meta and Amazon), pay commisions to sales people based on ad spends, show performance in near real-time for customers, disable campaigns when clients run out of money, renew subscriptions... all while maintaining data security for credit cards, ad accounts and other sensitive data in an exponentially growing ecosystem.<br /><br/>This wireframe allows you to walk through the flow for different aspects of the organizaiton and understand the complex path data takes to become actionable. Filter specific business workflows on the menu to the left, click on the item for more informaiton and see what directly connects to each system and process.",
+  "description": "Imagine a modern digital ad agency that manages the spending of thousands of customers.  This organization needs to provide up-to-date information from the big ad platforms (Google, Bing, Meta and Amazon), pay commisions to sales people based on ad spends, show performance in near real-time for customers, disable campaigns when clients run out of money, renew subscriptions... all while maintaining data security for credit cards, ad accounts and other sensitive data in an exponentially growing ecosystem.<br /><br />This wireframe allows you to walk through the flow for different aspects of the organizaiton and understand the complex path data takes to become actionable. Filter specific business workflows on the menu to the left, click on the item for more informaiton and see what directly connects to each system and process.<br/><br/><a href=\"/ecosystem/ecosystem-explorer.html?project=chaos.json\">Stage Two:  Business Workflow</a>",
   "ecosystem": [
     {
-      "entityId": "67eb586a-fedf-4976-bf02-039802293278",
-      "title": "Google Api",
-      "description": "Google Api component in the system",
+      "entityId": "35a375af-38cf-41bb-8deb-fe5e3ea88a5b",
+      "title": "Amazon Ad Webhook",
+      "description": "Special endpoint in API gateway to verify and route data to the service bus.  If data does not pass integrity checks it is rounted to the error bus",
       "connectors": [
-        "701bec62-afa0-4333-a512-8a54b1d3b932"
-      ],
-      "workflows": [
-        "c5bf76e9-c2b0-4026-abf1-7bb6b50f560d"
-      ]
-    },
-    {
-      "entityId": "701bec62-afa0-4333-a512-8a54b1d3b932",
-      "title": "Google C# App",
-      "description": "Custom Azure function written in c# that collects data from the Google API on a scheduled task and pushes it to the API gateway for processing in data lake",
-      "connectors": [
-        "67eb586a-fedf-4976-bf02-039802293278",
         "11c17229-7022-4915-820c-4d27a9e54c07",
-        "83a755cc-d8b8-47cc-96ee-7a6876f24934",
-        "619ad804-f390-4ab5-acaf-453e09e17dfc"
-      ],
-      "workflows": [
-        "c5bf76e9-c2b0-4026-abf1-7bb6b50f560d"
-      ]
-    },
-    {
-      "entityId": "11c17229-7022-4915-820c-4d27a9e54c07",
-      "title": "API Gateway",
-      "description": "Azure API Gateway with shared policies to scan for PII and malformed JSON payloads. Data is routed to Service Bus for routing to separate tasks",
-      "connectors": [
-        "701bec62-afa0-4333-a512-8a54b1d3b932",
-        "8ce39b38-f5d8-4aaf-935b-dfd3447f58bd",
         "c2d51ab5-fd6e-4a88-9f14-111dd7d9110a",
-        "cf12fbab-850d-4200-8150-a15a6655cc82",
-        "de059f9c-a2c2-4c9c-9de5-a79ef0dff524",
-        "03fbf33e-aff4-4395-85c7-f65fbaa61490",
-        "6b1e745f-32c7-4634-ac8d-9509da11e9f1",
-        "a545612e-a374-4de5-a236-a75fa6bb3d1b",
-        "35a375af-38cf-41bb-8deb-fe5e3ea88a5b"
-      ],
-      "workflows": [
-        "c213692c-37a7-40ab-9328-edb74fee30e5",
-        "74728c6c-714d-4036-82a9-b23169228dfb",
-        "c5bf76e9-c2b0-4026-abf1-7bb6b50f560d"
-      ]
-    },
-    {
-      "entityId": "8ce39b38-f5d8-4aaf-935b-dfd3447f58bd",
-      "title": "Service Bus",
-      "description": "Service Bus sends data to multiple targets and launches additional processes",
-      "connectors": [
-        "11c17229-7022-4915-820c-4d27a9e54c07",
-        "3452506e-c6aa-4652-bc70-0277d3b71258"
-      ],
-      "workflows": [
-        "c213692c-37a7-40ab-9328-edb74fee30e5",
-        "74728c6c-714d-4036-82a9-b23169228dfb",
-        "c5bf76e9-c2b0-4026-abf1-7bb6b50f560d"
-      ]
-    },
-    {
-      "entityId": "c2d51ab5-fd6e-4a88-9f14-111dd7d9110a",
-      "title": "IDP",
-      "description": "IDP component in the system",
-      "connectors": [
-        "11c17229-7022-4915-820c-4d27a9e54c07",
-        "de059f9c-a2c2-4c9c-9de5-a79ef0dff524",
-        "35a375af-38cf-41bb-8deb-fe5e3ea88a5b"
-      ],
-      "workflows": [
-        "c213692c-37a7-40ab-9328-edb74fee30e5",
-        "74728c6c-714d-4036-82a9-b23169228dfb"
-      ]
-    },
-    {
-      "entityId": "3452506e-c6aa-4652-bc70-0277d3b71258",
-      "title": "Lake Storage",
-      "description": "Lake Storage component in the system",
-      "connectors": [
-        "bcb5cb03-9c40-4995-bd5d-f0375311f050",
-        "8ce39b38-f5d8-4aaf-935b-dfd3447f58bd"
-      ],
-      "workflows": [
-        "c213692c-37a7-40ab-9328-edb74fee30e5",
-        "74728c6c-714d-4036-82a9-b23169228dfb"
-      ]
-    },
-    {
-      "entityId": "bcb5cb03-9c40-4995-bd5d-f0375311f050",
-      "title": "Databricks",
-      "description": "Databricks component in the system",
-      "connectors": [
-        "22a098be-ae1e-49d1-ac8a-d77cdcb5e2d0",
-        "0080feab-c68c-4423-85f2-98068fb5d4d1",
-        "3452506e-c6aa-4652-bc70-0277d3b71258"
-      ],
-      "workflows": [
-        "c213692c-37a7-40ab-9328-edb74fee30e5",
-        "74728c6c-714d-4036-82a9-b23169228dfb"
-      ]
-    },
-    {
-      "entityId": "22a098be-ae1e-49d1-ac8a-d77cdcb5e2d0",
-      "title": "Customer Success BI",
-      "description": "Customer Success BI component in the system",
-      "connectors": [
-        "bcb5cb03-9c40-4995-bd5d-f0375311f050"
-      ],
-      "workflows": [
-        "c213692c-37a7-40ab-9328-edb74fee30e5"
-      ]
-    },
-    {
-      "entityId": "7284e066-9b5a-446a-bf9a-4bb955448886",
-      "title": "Facebook API",
-      "description": "Facebook API component in the system",
-      "connectors": [
-        "cf12fbab-850d-4200-8150-a15a6655cc82"
-      ],
-      "workflows": [
-        "74728c6c-714d-4036-82a9-b23169228dfb"
-      ]
-    },
-    {
-      "entityId": "cf12fbab-850d-4200-8150-a15a6655cc82",
-      "title": "Custom Facebook App",
-      "description": "Custom Facebook App component in the system",
-      "connectors": [
-        "11c17229-7022-4915-820c-4d27a9e54c07",
-        "7284e066-9b5a-446a-bf9a-4bb955448886",
         "83a755cc-d8b8-47cc-96ee-7a6876f24934",
         "619ad804-f390-4ab5-acaf-453e09e17dfc"
       ],
       "workflows": [
-        "74728c6c-714d-4036-82a9-b23169228dfb"
+        "3ebd5a1c-d23a-4d10-8ad3-d795045ba9c5"
       ]
     },
     {
@@ -168,14 +45,39 @@
       ]
     },
     {
-      "entityId": "7e8a9754-5058-4d76-a5f6-3fcc854008b1",
-      "title": "Bing Ads API",
-      "description": "API containing ad spend history for the client. &lt;a href=\"https://learn.microsoft.com/en-us/advertising/guides/?view=bingads-13\" target=\"_blank\"&gt;Documentaiton&lt;/a&gt;",
+      "entityId": "11c17229-7022-4915-820c-4d27a9e54c07",
+      "title": "API Gateway",
+      "description": "Azure API Gateway with shared policies to scan for PII and malformed JSON payloads. Data is routed to Service Bus for routing to separate tasks",
       "connectors": [
-        "03fbf33e-aff4-4395-85c7-f65fbaa61490"
+        "35a375af-38cf-41bb-8deb-fe5e3ea88a5b",
+        "de059f9c-a2c2-4c9c-9de5-a79ef0dff524",
+        "a545612e-a374-4de5-a236-a75fa6bb3d1b",
+        "03fbf33e-aff4-4395-85c7-f65fbaa61490",
+        "cf12fbab-850d-4200-8150-a15a6655cc82",
+        "701bec62-afa0-4333-a512-8a54b1d3b932",
+        "c2d51ab5-fd6e-4a88-9f14-111dd7d9110a",
+        "6b1e745f-32c7-4634-ac8d-9509da11e9f1",
+        "8ce39b38-f5d8-4aaf-935b-dfd3447f58bd",
+        "2abe17a0-4366-4f4e-941f-02ca05c29ef4"
       ],
       "workflows": [
-        "c213692c-37a7-40ab-9328-edb74fee30e5"
+        "3ebd5a1c-d23a-4d10-8ad3-d795045ba9c5",
+        "74728c6c-714d-4036-82a9-b23169228dfb",
+        "c5bf76e9-c2b0-4026-abf1-7bb6b50f560d",
+        "c213692c-37a7-40ab-9328-edb74fee30e5",
+        "f0fabc0c-271f-4cee-8497-7c4e4e9d5a6f"
+      ]
+    },
+    {
+      "entityId": "a545612e-a374-4de5-a236-a75fa6bb3d1b",
+      "title": "AWS Pinpoint",
+      "description": "Collects ad data as it becomes available in lieu of a polling model. Pushes data to the in-house Azure API gateway for further processing",
+      "connectors": [
+        "11c17229-7022-4915-820c-4d27a9e54c07",
+        "9451cbaf-1581-40f9-a450-74f68cb5a0e5"
+      ],
+      "workflows": [
+        "3ebd5a1c-d23a-4d10-8ad3-d795045ba9c5"
       ]
     },
     {
@@ -193,14 +95,138 @@
       ]
     },
     {
-      "entityId": "0080feab-c68c-4423-85f2-98068fb5d4d1",
-      "title": "Sales Team Sharepoint",
-      "description": "Sales Team Sharepoint component in the system",
+      "entityId": "7e8a9754-5058-4d76-a5f6-3fcc854008b1",
+      "title": "Bing Ads API",
+      "description": "API containing ad spend history for the client. &amp;lt;a href=\"https://learn.microsoft.com/en-us/advertising/guides/?view=bingads-13\" target=\"_blank\"&amp;gt;Documentaiton&amp;lt;/a&amp;gt;",
+      "connectors": [
+        "03fbf33e-aff4-4395-85c7-f65fbaa61490"
+      ],
+      "workflows": [
+        "c213692c-37a7-40ab-9328-edb74fee30e5"
+      ]
+    },
+    {
+      "entityId": "cf12fbab-850d-4200-8150-a15a6655cc82",
+      "title": "Custom Facebook App",
+      "description": "Custom Facebook App component in the system",
+      "connectors": [
+        "11c17229-7022-4915-820c-4d27a9e54c07",
+        "7284e066-9b5a-446a-bf9a-4bb955448886",
+        "83a755cc-d8b8-47cc-96ee-7a6876f24934",
+        "619ad804-f390-4ab5-acaf-453e09e17dfc"
+      ],
+      "workflows": [
+        "74728c6c-714d-4036-82a9-b23169228dfb"
+      ]
+    },
+    {
+      "entityId": "22a098be-ae1e-49d1-ac8a-d77cdcb5e2d0",
+      "title": "Customer Success BI",
+      "description": "Customer Success BI component in the system",
       "connectors": [
         "bcb5cb03-9c40-4995-bd5d-f0375311f050"
       ],
       "workflows": [
+        "c213692c-37a7-40ab-9328-edb74fee30e5"
+      ]
+    },
+    {
+      "entityId": "bcb5cb03-9c40-4995-bd5d-f0375311f050",
+      "title": "Databricks",
+      "description": "Databricks component in the system",
+      "connectors": [
+        "22a098be-ae1e-49d1-ac8a-d77cdcb5e2d0",
+        "3452506e-c6aa-4652-bc70-0277d3b71258",
+        "0080feab-c68c-4423-85f2-98068fb5d4d1"
+      ],
+      "workflows": [
+        "3ebd5a1c-d23a-4d10-8ad3-d795045ba9c5",
+        "74728c6c-714d-4036-82a9-b23169228dfb",
+        "c5bf76e9-c2b0-4026-abf1-7bb6b50f560d",
+        "c213692c-37a7-40ab-9328-edb74fee30e5",
+        "f0fabc0c-271f-4cee-8497-7c4e4e9d5a6f"
+      ]
+    },
+    {
+      "entityId": "7284e066-9b5a-446a-bf9a-4bb955448886",
+      "title": "Facebook API",
+      "description": "Facebook API component in the system",
+      "connectors": [
+        "cf12fbab-850d-4200-8150-a15a6655cc82"
+      ],
+      "workflows": [
         "74728c6c-714d-4036-82a9-b23169228dfb"
+      ]
+    },
+    {
+      "entityId": "83a755cc-d8b8-47cc-96ee-7a6876f24934",
+      "title": "Github",
+      "description": "Repo for all code in the organization.  Access is managed via individual accounts an invites by engineering team",
+      "connectors": [
+        "701bec62-afa0-4333-a512-8a54b1d3b932",
+        "cf12fbab-850d-4200-8150-a15a6655cc82",
+        "de059f9c-a2c2-4c9c-9de5-a79ef0dff524",
+        "03fbf33e-aff4-4395-85c7-f65fbaa61490",
+        "6b1e745f-32c7-4634-ac8d-9509da11e9f1",
+        "35a375af-38cf-41bb-8deb-fe5e3ea88a5b",
+        "2abe17a0-4366-4f4e-941f-02ca05c29ef4"
+      ],
+      "workflows": []
+    },
+    {
+      "entityId": "67eb586a-fedf-4976-bf02-039802293278",
+      "title": "Google Api",
+      "description": "Google Api component in the system",
+      "connectors": [
+        "701bec62-afa0-4333-a512-8a54b1d3b932"
+      ],
+      "workflows": [
+        "c5bf76e9-c2b0-4026-abf1-7bb6b50f560d"
+      ]
+    },
+    {
+      "entityId": "701bec62-afa0-4333-a512-8a54b1d3b932",
+      "title": "Google C# App",
+      "description": "Custom Azure function written in c# that collects data from the Google API on a scheduled task and pushes it to the API gateway for processing in data lake",
+      "connectors": [
+        "67eb586a-fedf-4976-bf02-039802293278",
+        "11c17229-7022-4915-820c-4d27a9e54c07",
+        "83a755cc-d8b8-47cc-96ee-7a6876f24934",
+        "619ad804-f390-4ab5-acaf-453e09e17dfc"
+      ],
+      "workflows": [
+        "c5bf76e9-c2b0-4026-abf1-7bb6b50f560d"
+      ]
+    },
+    {
+      "entityId": "c2d51ab5-fd6e-4a88-9f14-111dd7d9110a",
+      "title": "IDP",
+      "description": "IDP component in the system",
+      "connectors": [
+        "11c17229-7022-4915-820c-4d27a9e54c07",
+        "de059f9c-a2c2-4c9c-9de5-a79ef0dff524",
+        "35a375af-38cf-41bb-8deb-fe5e3ea88a5b",
+        "e93001fa-1fa2-4cc8-83da-518bc98d309c"
+      ],
+      "workflows": [
+        "c213692c-37a7-40ab-9328-edb74fee30e5",
+        "74728c6c-714d-4036-82a9-b23169228dfb"
+      ]
+    },
+    {
+      "entityId": "3452506e-c6aa-4652-bc70-0277d3b71258",
+      "title": "Lake Storage",
+      "description": "Lake Storage component in the system",
+      "connectors": [
+        "bcb5cb03-9c40-4995-bd5d-f0375311f050",
+        "8ce39b38-f5d8-4aaf-935b-dfd3447f58bd"
+      ],
+      "workflows": [
+        "3ebd5a1c-d23a-4d10-8ad3-d795045ba9c5",
+        "74728c6c-714d-4036-82a9-b23169228dfb",
+        "c5bf76e9-c2b0-4026-abf1-7bb6b50f560d",
+        "c213692c-37a7-40ab-9328-edb74fee30e5",
+        "f0fabc0c-271f-4cee-8497-7c4e4e9d5a6f"
       ]
     },
     {
@@ -218,43 +244,31 @@
       ]
     },
     {
-      "entityId": "83a755cc-d8b8-47cc-96ee-7a6876f24934",
-      "title": "Github",
-      "description": "Repo for all code in the organization.  Access is managed via individual accounts an invites by engineering team",
+      "entityId": "0080feab-c68c-4423-85f2-98068fb5d4d1",
+      "title": "Sales Team Sharepoint",
+      "description": "View on gold table data from Databricks displayed in Salesforce",
       "connectors": [
-        "701bec62-afa0-4333-a512-8a54b1d3b932",
-        "cf12fbab-850d-4200-8150-a15a6655cc82",
-        "de059f9c-a2c2-4c9c-9de5-a79ef0dff524",
-        "03fbf33e-aff4-4395-85c7-f65fbaa61490",
-        "6b1e745f-32c7-4634-ac8d-9509da11e9f1",
-        "35a375af-38cf-41bb-8deb-fe5e3ea88a5b"
-      ],
-      "workflows": []
-    },
-    {
-      "entityId": "a545612e-a374-4de5-a236-a75fa6bb3d1b",
-      "title": "AWS Pinpoint",
-      "description": "Collects ad data as it becomes available in lieu of a polling model. Pushes data to the in-house Azure API gateway for further processing",
-      "connectors": [
-        "11c17229-7022-4915-820c-4d27a9e54c07",
-        "9451cbaf-1581-40f9-a450-74f68cb5a0e5"
+        "bcb5cb03-9c40-4995-bd5d-f0375311f050"
       ],
       "workflows": [
-        "3ebd5a1c-d23a-4d10-8ad3-d795045ba9c5"
+        "74728c6c-714d-4036-82a9-b23169228dfb",
+        "f0fabc0c-271f-4cee-8497-7c4e4e9d5a6f"
       ]
     },
     {
-      "entityId": "35a375af-38cf-41bb-8deb-fe5e3ea88a5b",
-      "title": "Amazon Ad Webhook",
-      "description": "Special endpoint in API gateway to verify and route data to the service bus.  If data does not pass integrity checks it is rounted to the error bus",
+      "entityId": "8ce39b38-f5d8-4aaf-935b-dfd3447f58bd",
+      "title": "Service Bus",
+      "description": "Service Bus sends data to multiple targets and launches additional processes",
       "connectors": [
         "11c17229-7022-4915-820c-4d27a9e54c07",
-        "c2d51ab5-fd6e-4a88-9f14-111dd7d9110a",
-        "83a755cc-d8b8-47cc-96ee-7a6876f24934",
-        "619ad804-f390-4ab5-acaf-453e09e17dfc"
+        "3452506e-c6aa-4652-bc70-0277d3b71258"
       ],
       "workflows": [
-        "3ebd5a1c-d23a-4d10-8ad3-d795045ba9c5"
+        "3ebd5a1c-d23a-4d10-8ad3-d795045ba9c5",
+        "74728c6c-714d-4036-82a9-b23169228dfb",
+        "c5bf76e9-c2b0-4026-abf1-7bb6b50f560d",
+        "c213692c-37a7-40ab-9328-edb74fee30e5",
+        "f0fabc0c-271f-4cee-8497-7c4e4e9d5a6f"
       ]
     },
     {
@@ -274,12 +288,49 @@
         "c5bf76e9-c2b0-4026-abf1-7bb6b50f560d",
         "3ebd5a1c-d23a-4d10-8ad3-d795045ba9c5"
       ]
+    },
+    {
+      "entityId": "4b046f19-00ae-4a7e-b251-0273e3b96ec5",
+      "title": "Zoho API",
+      "description": "Integration point to synchronize data to and from Zoho CRM",
+      "connectors": [
+        "e93001fa-1fa2-4cc8-83da-518bc98d309c",
+        "2abe17a0-4366-4f4e-941f-02ca05c29ef4"
+      ],
+      "workflows": [
+        "f0fabc0c-271f-4cee-8497-7c4e4e9d5a6f"
+      ]
+    },
+    {
+      "entityId": "e93001fa-1fa2-4cc8-83da-518bc98d309c",
+      "title": "Zoho CRM",
+      "description": "SaaS based CRM source of truth for sales claims, contracts and customer details",
+      "connectors": [
+        "c2d51ab5-fd6e-4a88-9f14-111dd7d9110a",
+        "4b046f19-00ae-4a7e-b251-0273e3b96ec5"
+      ],
+      "workflows": [
+        "f0fabc0c-271f-4cee-8497-7c4e4e9d5a6f"
+      ]
+    },
+    {
+      "entityId": "2abe17a0-4366-4f4e-941f-02ca05c29ef4",
+      "title": "Zoho Sales Data Puller",
+      "description": "node.js script that pulls contract details and customer details from Zoho",
+      "connectors": [
+        "11c17229-7022-4915-820c-4d27a9e54c07",
+        "83a755cc-d8b8-47cc-96ee-7a6876f24934",
+        "4b046f19-00ae-4a7e-b251-0273e3b96ec5"
+      ],
+      "workflows": [
+        "f0fabc0c-271f-4cee-8497-7c4e4e9d5a6f"
+      ]
     }
   ],
   "workflows": [
     {
-      "workflowId": "c213692c-37a7-40ab-9328-edb74fee30e5",
-      "workflowName": "Microsoft Ad Spend",
+      "workflowId": "3ebd5a1c-d23a-4d10-8ad3-d795045ba9c5",
+      "workflowName": "Amazon Ad Spend",
       "owner": "Michael"
     },
     {
@@ -293,8 +344,13 @@
       "owner": "Michael"
     },
     {
-      "workflowId": "3ebd5a1c-d23a-4d10-8ad3-d795045ba9c5",
-      "workflowName": "Amazon Ad Spend",
+      "workflowId": "c213692c-37a7-40ab-9328-edb74fee30e5",
+      "workflowName": "Microsoft Ad Spend",
+      "owner": "Michael"
+    },
+    {
+      "workflowId": "f0fabc0c-271f-4cee-8497-7c4e4e9d5a6f",
+      "workflowName": "Sales Commission Reconcilation",
       "owner": "Michael"
     }
   ]

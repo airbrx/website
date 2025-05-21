@@ -10,7 +10,6 @@
   <link rel="stylesheet" href="/css/style.css">
 
   <style>
-
     .container {
       display: flex;
       flex-direction: row;
@@ -80,6 +79,9 @@
   <!-- button id="toggleSidebarBtn" onclick="toggleSidebar()">⏴</button -->
 
 
+  <nav class="menu" id="menu">
+
+  </nav>
   <div class="container">
 
     <div id="workflowSidebar" class="sidebar">
@@ -90,13 +92,12 @@
       <hr>
       <button onclick="showJSON('ecosystem')">View Ecosystem JSON</button>
       <hr />
-      <button onclick="refreshFromJson()">Load custom JSON</button>
-      <button onclick="refreshFromFile()">Reset to Default Template</button>
     </div>
 
     <div class="wireframe-container">
+      <br/>
       <div class="article" id="ecosystemdesc">
-        
+
       </div>
       <svg></svg>
     </div>
@@ -136,6 +137,8 @@
 
 
 <script src="/ecosystem/wireframe.js" defer></script>
-
+<script>
+  menu()
+</script>
 </body>
 </html>

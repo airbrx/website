@@ -1,0 +1,416 @@
+{
+  "title": "Online Ad Agency Data Ecosystem Chaos",
+  "description": "Welcome to our fictional digital ad agency executes ad buys on behalf on it's clientel.  The agency lives on data and has to regularly interact with multiple vendor APIs to generate performace reports for clients, sales commisions for employees, and monitor ad health for the account management team.<br /><br/><div style=\"width:100%;text-align:right;color:#fd6c1d;cursor:pointer\" onclick=\"window.location.href='ecosystem-explorer.html?project=business-units.json'\"><b>Next: Business Units &gt;&gt;</b></div>",
+  "ecosystem": [
+    {
+      "entityId": "add30a24-5ad3-4dfd-86cd-60f1135f529c",
+      "title": "Ad Spend Excel View",
+      "description": "Microsoft Excel integration to database to allow finance to review and adjust numbers before synchronization to billing platform",
+      "connectors": [
+        "481ce946-9463-4acd-9594-a55478c905e6"
+      ],
+      "workflows": [
+        "f03d631c-1f6e-4a5c-a8d7-76b4960fdeef"
+      ]
+    },
+    {
+      "entityId": "c1067dc7-b1a1-4a64-95a3-83fe43a967f1",
+      "title": "Ad Health Postgres DB",
+      "description": "Database to inform the Ad Health application dashboard and alert ssytem",
+      "connectors": [
+        "f2e6fa0f-239b-4491-81e2-b33a57e675de",
+        "de76bfba-b310-45a1-bf7d-aba99fcb484c"
+      ],
+      "workflows": [
+        "f81a7a6a-6e69-4819-9267-6f48f774b4b9"
+      ]
+    },
+    {
+      "entityId": "7e4faf49-ad44-48cc-a33b-e8da72b07a9c",
+      "title": "Ad Spend Aggregator Script",
+      "description": "Nightly node process that pulls current ad spend data from the SQL server and creates an overview of all sales for use by the billing team",
+      "connectors": [
+        "8f2aac35-502e-4b2b-9c75-c362355ee53c",
+        "481ce946-9463-4acd-9594-a55478c905e6"
+      ],
+      "workflows": [
+        "f03d631c-1f6e-4a5c-a8d7-76b4960fdeef"
+      ]
+    },
+    {
+      "entityId": "da4bf498-525e-40ce-b39a-6f6c26c19d87",
+      "title": "Ad Spend Billing Sync",
+      "description": "Run daily, this job pushes data required for monthly billing to the billing platform",
+      "connectors": [
+        "481ce946-9463-4acd-9594-a55478c905e6",
+        "2c9d16f7-6915-4a44-8da3-0a88e3ab2a3e"
+      ],
+      "workflows": [
+        "f03d631c-1f6e-4a5c-a8d7-76b4960fdeef"
+      ]
+    },
+    {
+      "entityId": "481ce946-9463-4acd-9594-a55478c905e6",
+      "title": "Ad Spend MS SQL Store",
+      "description": "Processed ad spend data is stored in AWS for later synchronization to the billing platform",
+      "connectors": [
+        "7e4faf49-ad44-48cc-a33b-e8da72b07a9c",
+        "da4bf498-525e-40ce-b39a-6f6c26c19d87",
+        "add30a24-5ad3-4dfd-86cd-60f1135f529c"
+      ],
+      "workflows": [
+        "f03d631c-1f6e-4a5c-a8d7-76b4960fdeef"
+      ]
+    },
+    {
+      "entityId": "92c11750-c72d-4277-be7a-871867ca85a1",
+      "title": "Amazon Ad API",
+      "description": "Source of ad data for impressions, clicks and revenue share data for items sold on Amazon as a result of an ad",
+      "connectors": [
+        "374d3aa4-991d-4c33-b28c-c6c1696fbf2b",
+        "b4053b46-9995-475b-8143-73cc7200dbbd"
+      ],
+      "workflows": [
+        "74728c6c-714d-4036-82a9-b23169228dfb"
+      ]
+    },
+    {
+      "entityId": "374d3aa4-991d-4c33-b28c-c6c1696fbf2b",
+      "title": "Amazon Ad Data Initiator",
+      "description": "The Amazon API behaves asynchonously and require a request to generate a report which can run for an indeterminate period.  This bash script running on a cron job on Linux starts the job which later comes back to a web hook",
+      "connectors": [
+        "92c11750-c72d-4277-be7a-871867ca85a1",
+        "969cc399-645e-4280-8aa1-842f775a950e",
+        "b4053b46-9995-475b-8143-73cc7200dbbd"
+      ],
+      "workflows": [
+        "74728c6c-714d-4036-82a9-b23169228dfb"
+      ]
+    },
+    {
+      "entityId": "b4053b46-9995-475b-8143-73cc7200dbbd",
+      "title": "Amazon Poll Service",
+      "description": "A python script that regularly checks the Amazon Ad API for results from the jobs launched by the Amazon Ad Data Initiator.  Reads the same file system as the Ad iniitator to track current jobs",
+      "connectors": [
+        "92c11750-c72d-4277-be7a-871867ca85a1",
+        "374d3aa4-991d-4c33-b28c-c6c1696fbf2b",
+        "8f2aac35-502e-4b2b-9c75-c362355ee53c",
+        "969cc399-645e-4280-8aa1-842f775a950e"
+      ],
+      "workflows": [
+        "74728c6c-714d-4036-82a9-b23169228dfb"
+      ]
+    },
+    {
+      "entityId": "056b9ad4-195c-465c-9695-0bb32ae6264c",
+      "title": "Bing Ad Puller script",
+      "description": "C# Function running nightly to pull data and transform it into structured data in the backend SQL server. Has scaling issues",
+      "connectors": [
+        "ff8e797d-fb1b-4f74-8cca-d179c65b0c9b",
+        "8f2aac35-502e-4b2b-9c75-c362355ee53c"
+      ],
+      "workflows": [
+        "74728c6c-714d-4036-82a9-b23169228dfb"
+      ]
+    },
+    {
+      "entityId": "ff8e797d-fb1b-4f74-8cca-d179c65b0c9b",
+      "title": "Bing Ads API",
+      "description": "Source of ad spend and activity data on Microsoft Bing.",
+      "connectors": [
+        "056b9ad4-195c-465c-9695-0bb32ae6264c",
+        "6155933c-80b6-4d29-b04e-cd49eeae1fce"
+      ],
+      "workflows": [
+        "74728c6c-714d-4036-82a9-b23169228dfb",
+        "78732b00-3653-402e-930f-25bf7c0e5767"
+      ]
+    },
+    {
+      "entityId": "de76bfba-b310-45a1-bf7d-aba99fcb484c",
+      "title": "Campaign Health Dashboard",
+      "description": "Publicly facing website with client log-in and administrative dashboards to see overall health of the campaign. ",
+      "connectors": [
+        "c1067dc7-b1a1-4a64-95a3-83fe43a967f1",
+        "9a692e3d-e2f5-404a-99e9-b1dcc226af82",
+        "75d1313d-9eae-4996-a2c1-0752a18dccbe"
+      ],
+      "workflows": [
+        "f81a7a6a-6e69-4819-9267-6f48f774b4b9"
+      ]
+    },
+    {
+      "entityId": "2c9d16f7-6915-4a44-8da3-0a88e3ab2a3e",
+      "title": "Chargbee",
+      "description": "SaaS based platform that manages recurring billing to clients.  Contains credit card information and other PII",
+      "connectors": [
+        "e6cf643a-5a7d-4b9a-a962-43fa9706c875",
+        "da4bf498-525e-40ce-b39a-6f6c26c19d87"
+      ],
+      "workflows": [
+        "f03d631c-1f6e-4a5c-a8d7-76b4960fdeef"
+      ]
+    },
+    {
+      "entityId": "75d1313d-9eae-4996-a2c1-0752a18dccbe",
+      "title": "Customer Active Directory",
+      "description": "Identity Proivder with client logins and permissions",
+      "connectors": [
+        "de76bfba-b310-45a1-bf7d-aba99fcb484c"
+      ],
+      "workflows": [
+        "f81a7a6a-6e69-4819-9267-6f48f774b4b9"
+      ]
+    },
+    {
+      "entityId": "4680e391-e66b-43c5-abd7-0fd0e19a0635",
+      "title": "Facebook Ad Data Puller",
+      "description": "Python script running nightly to pull ad data for Facebook, writes to local filesystem for later processing",
+      "connectors": [
+        "9a692e3d-e2f5-404a-99e9-b1dcc226af82",
+        "f0501e35-5766-4d76-91a4-c1841423b7f5",
+        "969cc399-645e-4280-8aa1-842f775a950e",
+        "2f1c4f45-3dbb-41d8-a964-d825eb05a63e"
+      ],
+      "workflows": [
+        "74728c6c-714d-4036-82a9-b23169228dfb"
+      ]
+    },
+    {
+      "entityId": "2f1c4f45-3dbb-41d8-a964-d825eb05a63e",
+      "title": "Facebook Data Normalizer Script",
+      "description": "Legacy perl script that parses the verbose Facebook API data from the local filesystem and writes structured data to the database",
+      "connectors": [
+        "4680e391-e66b-43c5-abd7-0fd0e19a0635",
+        "9a692e3d-e2f5-404a-99e9-b1dcc226af82",
+        "8f2aac35-502e-4b2b-9c75-c362355ee53c"
+      ],
+      "workflows": [
+        "74728c6c-714d-4036-82a9-b23169228dfb"
+      ]
+    },
+    {
+      "entityId": "f2e6fa0f-239b-4491-81e2-b33a57e675de",
+      "title": "Faceboook Health Check Script",
+      "description": "Pulls data from Facebook API specific to impressions, clicks and actions generated by campaign.  Updates Ad Health database",
+      "connectors": [
+        "c1067dc7-b1a1-4a64-95a3-83fe43a967f1",
+        "9a692e3d-e2f5-404a-99e9-b1dcc226af82",
+        "f0501e35-5766-4d76-91a4-c1841423b7f5",
+        "969cc399-645e-4280-8aa1-842f775a950e"
+      ],
+      "workflows": [
+        "f81a7a6a-6e69-4819-9267-6f48f774b4b9"
+      ]
+    },
+    {
+      "entityId": "9a692e3d-e2f5-404a-99e9-b1dcc226af82",
+      "title": "GitHub",
+      "description": "Code repository and version control. ",
+      "connectors": [
+        "de76bfba-b310-45a1-bf7d-aba99fcb484c",
+        "4680e391-e66b-43c5-abd7-0fd0e19a0635",
+        "2f1c4f45-3dbb-41d8-a964-d825eb05a63e",
+        "f2e6fa0f-239b-4491-81e2-b33a57e675de",
+        "669ff6a3-6fe6-4506-a37f-0cf42c82816e",
+        "6155933c-80b6-4d29-b04e-cd49eeae1fce"
+      ],
+      "workflows": [
+        "f81a7a6a-6e69-4819-9267-6f48f774b4b9",
+        "74728c6c-714d-4036-82a9-b23169228dfb",
+        "78732b00-3653-402e-930f-25bf7c0e5767"
+      ]
+    },
+    {
+      "entityId": "669ff6a3-6fe6-4506-a37f-0cf42c82816e",
+      "title": "Google Ad Sales Data Puller",
+      "description": "A C# Azure Function that runs on a nightly schedule.  Because Google Ad Data can change retroactively (e.g. adjustments for bot traffic or cost per actions closed in a later session), the ad script pulls and overwrites the last 28 days of data. ",
+      "connectors": [
+        "0080feab-c68c-4423-85f2-98068fb5d4d1",
+        "8f2aac35-502e-4b2b-9c75-c362355ee53c",
+        "9a692e3d-e2f5-404a-99e9-b1dcc226af82",
+        "969cc399-645e-4280-8aa1-842f775a950e"
+      ],
+      "workflows": [
+        "74728c6c-714d-4036-82a9-b23169228dfb"
+      ]
+    },
+    {
+      "entityId": "0080feab-c68c-4423-85f2-98068fb5d4d1",
+      "title": "Google Ads API",
+      "description": "Source of data for Impresions, Clicks, Actions and campaign status.",
+      "connectors": [
+        "669ff6a3-6fe6-4506-a37f-0cf42c82816e",
+        "6155933c-80b6-4d29-b04e-cd49eeae1fce"
+      ],
+      "workflows": [
+        "74728c6c-714d-4036-82a9-b23169228dfb",
+        "78732b00-3653-402e-930f-25bf7c0e5767"
+      ]
+    },
+    {
+      "entityId": "f0501e35-5766-4d76-91a4-c1841423b7f5",
+      "title": "Meta Ads API",
+      "description": "Source of data for Facebook and Instagram advertising. ",
+      "connectors": [
+        "4680e391-e66b-43c5-abd7-0fd0e19a0635",
+        "f2e6fa0f-239b-4491-81e2-b33a57e675de",
+        "6155933c-80b6-4d29-b04e-cd49eeae1fce"
+      ],
+      "workflows": [
+        "f81a7a6a-6e69-4819-9267-6f48f774b4b9",
+        "74728c6c-714d-4036-82a9-b23169228dfb",
+        "78732b00-3653-402e-930f-25bf7c0e5767"
+      ]
+    },
+    {
+      "entityId": "289801ca-df56-42c7-a7d4-b77c23db8385",
+      "title": "Microsoft Excel Sales Rpt",
+      "description": "Coupled directly to a view of data on the SQL server, the finance team reconciles the numbers for payroll and requires a manual approval from the sales manager",
+      "connectors": [
+        "8f2aac35-502e-4b2b-9c75-c362355ee53c",
+        "82043c2a-c888-40ed-86a6-7c15dbe9a871"
+      ],
+      "workflows": [
+        "74728c6c-714d-4036-82a9-b23169228dfb"
+      ]
+    },
+    {
+      "entityId": "8f2aac35-502e-4b2b-9c75-c362355ee53c",
+      "title": "MS SQL Server -- Ad Spend Data",
+      "description": "Cloud based data store used for most ad data",
+      "connectors": [
+        "b4053b46-9995-475b-8143-73cc7200dbbd",
+        "056b9ad4-195c-465c-9695-0bb32ae6264c",
+        "2f1c4f45-3dbb-41d8-a964-d825eb05a63e",
+        "669ff6a3-6fe6-4506-a37f-0cf42c82816e",
+        "289801ca-df56-42c7-a7d4-b77c23db8385",
+        "6155933c-80b6-4d29-b04e-cd49eeae1fce",
+        "1ed2e8e0-1861-44ab-bbf1-e4428ae4fe9c",
+        "7e4faf49-ad44-48cc-a33b-e8da72b07a9c"
+      ],
+      "workflows": [
+        "74728c6c-714d-4036-82a9-b23169228dfb",
+        "78732b00-3653-402e-930f-25bf7c0e5767"
+      ]
+    },
+    {
+      "entityId": "d5500a17-1a3d-4072-b636-ceee3322db52",
+      "title": "Quickbooks Payroll",
+      "description": "Payroll service coupled to company accounting systems ",
+      "connectors": [
+        "82043c2a-c888-40ed-86a6-7c15dbe9a871"
+      ],
+      "workflows": [
+        "74728c6c-714d-4036-82a9-b23169228dfb"
+      ]
+    },
+    {
+      "entityId": "6155933c-80b6-4d29-b04e-cd49eeae1fce",
+      "title": "Sales Dashboard Puller",
+      "description": "Single script constantly running to pull deltas from all ad platforms except Amazon (due to polling restriction)",
+      "connectors": [
+        "ff8e797d-fb1b-4f74-8cca-d179c65b0c9b",
+        "9a692e3d-e2f5-404a-99e9-b1dcc226af82",
+        "0080feab-c68c-4423-85f2-98068fb5d4d1",
+        "f0501e35-5766-4d76-91a4-c1841423b7f5",
+        "8f2aac35-502e-4b2b-9c75-c362355ee53c",
+        "969cc399-645e-4280-8aa1-842f775a950e"
+      ],
+      "workflows": [
+        "78732b00-3653-402e-930f-25bf7c0e5767"
+      ]
+    },
+    {
+      "entityId": "1ed2e8e0-1861-44ab-bbf1-e4428ae4fe9c",
+      "title": "Sharepoint Leaderboard",
+      "description": "A Sharepoint report showing top performers based on campaign data ",
+      "connectors": [
+        "8f2aac35-502e-4b2b-9c75-c362355ee53c"
+      ],
+      "workflows": [
+        "78732b00-3653-402e-930f-25bf7c0e5767"
+      ]
+    },
+    {
+      "entityId": "969cc399-645e-4280-8aa1-842f775a950e",
+      "title": "Vault",
+      "description": "Keystore for API keys and other secrets",
+      "connectors": [
+        "374d3aa4-991d-4c33-b28c-c6c1696fbf2b",
+        "b4053b46-9995-475b-8143-73cc7200dbbd",
+        "4680e391-e66b-43c5-abd7-0fd0e19a0635",
+        "f2e6fa0f-239b-4491-81e2-b33a57e675de",
+        "669ff6a3-6fe6-4506-a37f-0cf42c82816e",
+        "6155933c-80b6-4d29-b04e-cd49eeae1fce"
+      ],
+      "workflows": [
+        "f81a7a6a-6e69-4819-9267-6f48f774b4b9",
+        "74728c6c-714d-4036-82a9-b23169228dfb",
+        "78732b00-3653-402e-930f-25bf7c0e5767"
+      ]
+    },
+    {
+      "entityId": "82043c2a-c888-40ed-86a6-7c15dbe9a871",
+      "title": "Zapier",
+      "description": "No code platform extracts excel data and imports into Quickbooks payroll",
+      "connectors": [
+        "289801ca-df56-42c7-a7d4-b77c23db8385",
+        "d5500a17-1a3d-4072-b636-ceee3322db52"
+      ],
+      "workflows": [
+        "74728c6c-714d-4036-82a9-b23169228dfb"
+      ]
+    },
+    {
+      "entityId": "5d455c1d-2223-492d-9166-d61214cff1a6",
+      "title": "Zoho CRM",
+      "description": "Source of truth for contracts and client contact information",
+      "connectors": [
+        "e6cf643a-5a7d-4b9a-a962-43fa9706c875"
+      ],
+      "workflows": [
+        "74728c6c-714d-4036-82a9-b23169228dfb",
+        "f03d631c-1f6e-4a5c-a8d7-76b4960fdeef"
+      ]
+    },
+    {
+      "entityId": "e6cf643a-5a7d-4b9a-a962-43fa9706c875",
+      "title": "Zoho/Chargbee Sync",
+      "description": "Nightly C# script that looks for deltas between the two systems and updates over APIs",
+      "connectors": [
+        "5d455c1d-2223-492d-9166-d61214cff1a6",
+        "2c9d16f7-6915-4a44-8da3-0a88e3ab2a3e"
+      ],
+      "workflows": [
+        "f03d631c-1f6e-4a5c-a8d7-76b4960fdeef"
+      ]
+    }
+  ],
+  "workflows": [
+    {
+      "workflowId": "f81a7a6a-6e69-4819-9267-6f48f774b4b9",
+      "workflowName": "Campaign Health Status",
+      "workflowDescription": "It is critical for the agency to be aware of the status of ads. Configuration errors, conflicts with other campaigns or client interactions with their campaigns can cause ads to stop running.  The alert system needs to keep account managers aware of issues with the campaign and the dashboard of the overall health of ad platforms",
+      "owner": "Michael"
+    },
+    {
+      "workflowId": "74728c6c-714d-4036-82a9-b23169228dfb",
+      "workflowName": "Sales Commission Reconciliation",
+      "workflowDescription": "Sales leadership needs to be able to calculate commissions by the end of the month each month.  This requires pulling active ad data for how much the client actually spent on the campaign. ",
+      "owner": "Michael"
+    },
+    {
+      "workflowId": "78732b00-3653-402e-930f-25bf7c0e5767",
+      "workflowName": "Sales Leaderboard",
+      "workflowDescription": "The Sales Leaderboard relies on as close to realtime data as allowed by data flows to show top performers.  It is also used by the sales management team to find underperforming sales assoicates",
+      "owner": "Michael"
+    },
+    {
+      "workflowId": "f03d631c-1f6e-4a5c-a8d7-76b4960fdeef",
+      "workflowName": "Subscription Renewals",
+      "workflowDescription": "Each month clients should be automatically billed from the subscriptions SaaS platform.  This requires ad spend data, current client information and contract details from the CRM ",
+      "owner": "Michael"
+    }
+  ]
+}

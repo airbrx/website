@@ -49,6 +49,7 @@
 
   <div id="workflowSidebar" class="sidebar">
     <h3>Workflows</h3>
+    <p>"Workflows" might be a techncial workflow or a business workflow.</p>
     <ul id="workflowList"></ul>
     <button onclick="renderWireframe()">Clear Filter</button><br><br>
     <button onclick="viewAllEntities()">👁 View All Entities</button><br><br>
@@ -68,29 +69,44 @@
   </div>
 
   <div id="jsonModal" class="modal">
-  <div class="modal-content">
-    <span class="close" onclick="document.getElementById('jsonModal').style.display='none'">&times;</span>
-    <span class="close" onclick="copyTextToClibpoard('jsonContent')"> &#x29C9;</span>
-    <pre id="jsonContent"></pre>
+    <div class="modal-content">
+      <span class="close" onclick="document.getElementById('jsonModal').style.display='none'">&times;</span>
+      <span class="close" onclick="copyTextToClibpoard('jsonContent')"> &#x29C9;</span>
+      <pre id="jsonContent"></pre>
+    </div>
   </div>
-</div>
-<div id="editEntityModal" class="modal">
-  <div class="modal-content">
-    <span class="close" onclick="document.getElementById('editEntityModal').style.display='none'">&times;</span>
-    <h3>Edit Entity</h3>
-    <form id="editEntityForm">
-      <input type="hidden" id="editEntityId" />
-      <label>Title:<br><input type="text" id="editTitle" /></label><br><br>
-      <label>Description:<br><textarea id="editDescription" rows="4" style="width: 100%;"></textarea></label><br><br>
-      <label>Connectors:</label><br>
-      <div id="editConnectors" style="max-height: 100px; overflow-y: auto; border: 1px solid #ccc; padding: 5px;"></div><br>
-      <label>Workflows:</label><br>
-      <div id="editWorkflows" style="max-height: 100px; overflow-y: auto; border: 1px solid #ccc; padding: 5px;"></div><br>
-      <button type="button" onclick="saveEntityEdits()">💾 Save</button>
-      <button type="button" onclick="deleteEntity()">🗑️ Delete</button>
-    </form>
+  <div id="editEntityModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="document.getElementById('editEntityModal').style.display='none'">&times;</span>
+      <h3>Edit Entity</h3>
+      <form id="editEntityForm">
+        <input type="hidden" id="editEntityId" />
+        <label>Title:<br><input type="text" id="editTitle" /></label><br><br>
+        <label>Description:<br><textarea id="editDescription" rows="4" style="width: 100%;"></textarea></label><br><br>
+        <label>Connectors:</label><br>
+        <div id="editConnectors" style="max-height: 100px; overflow-y: auto; border: 1px solid #ccc; padding: 5px;"></div><br>
+        <label>Workflows:</label><br>
+        <div id="editWorkflows" style="max-height: 100px; overflow-y: auto; border: 1px solid #ccc; padding: 5px;"></div><br>
+        <button type="button" onclick="saveEntityEdits()">💾 Save</button>
+        <button type="button" onclick="deleteEntity()">🗑️ Delete</button>
+      </form>
+    </div>
   </div>
-</div>
+  <div id="editWorkflowModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="document.getElementById('editWorkflowModal').style.display='none'">&times;</span>
+      <h3>Edit Workflow</h3>
+      <form id="editEntityForm">
+        <input type="hidden" id="editWorkflowId" />
+        <label>Title:<br><input type="text" id="editWorkflowTitle" /></label><br><br>
+        <label>Description:<br><textarea id="editWorkflowDescription" rows="4" style="width: 100%;"></textarea></label><br><br>
+        <label>Owner:<br><input type=text id="editWorkflowOwner"></label><br><br>
+        <button type="button" onclick="saveWorkflowEdits()">💾 Save</button>
+        <button type="button" onclick="deleteWorkflow()">🗑️ Delete</button>
+      </form>
+    </div>
+  </div>
+
 <div id="uploadJsonModal" class="modal">
 </div>
 
@@ -114,8 +130,7 @@
         ecosystemData = ecoDefault.ecosystem;
         workflows = ecoDefault.workflows;
         ecoMeta.title = ecoDefault.title
-        ecoMeta.description = ecoDefault.description
-
+        ecoMeta.description = (ecoDefault.description)
         localStorage.setItem("ecosystemData", JSON.stringify(ecosystemData));
         localStorage.setItem("workflows", JSON.stringify(workflows));
 
@@ -150,8 +165,9 @@
       workflows.forEach(wf => {
         const li = document.createElement('li');
         li.innerHTML = `
-          <strong>${wf.workflowName}</strong> (${wf.owner})
+          <span onclick="filterByWorkflow('${wf.workflowId}')" style="cursor:pointer"><strong>${wf.workflowName}</strong></span><Br/>
           <button onclick="filterByWorkflow('${wf.workflowId}')">Filter</button>
+          <button onclick="showEditWorkflowModal('${wf.workflowId}')">Edit</button>
         `;
         ul.appendChild(li);
       });
@@ -414,6 +430,25 @@
       renderWireframe();
     }
 
+    function saveWorkflowEdits() {
+      const workflowId = document.getElementById('editWorkflowId').value;
+      const index = workflows.findIndex(e => e.workflowId === workflowId);
+      if (index === -1) return;
+
+      const updatedWF = {
+        workflowId: workflowId,
+        workflowName: document.getElementById('editWorkflowTitle').value,
+        workflowDescription: document.getElementById('editWorkflowDescription').value,
+        owner: document.getElementById('editWorkflowOwner').value,
+      };
+
+      workflows[index] = updatedWF;
+      console.log(updatedWF, index, workflows[index])
+
+      document.getElementById('editWorkflowModal').style.display = 'none';
+      buildWorkflowMenu();
+      renderWireframe();
+    }
 
     function deleteEntity() {
       const id = document.getElementById('editEntityId').value;
@@ -449,6 +484,7 @@
         const cleanWorkflows = workflows.map(w => ({
           workflowId: w.workflowId,
           workflowName: w.workflowName,
+          workflowDescription: w.workflowDescription,
           owner: w.owner
         }));
         let tmp = {
@@ -527,7 +563,11 @@
 
       const connectorsDiv = document.getElementById('editConnectors');
       connectorsDiv.innerHTML = '';
+      ecosystemData.sort((a, b) => a.title.localeCompare(b.title));
+
+
       ecosystemData.forEach(e => {
+        console.log(e)
         if (e.entityId !== entity.entityId) {
           const checked = entity.connectors?.includes(e.entityId) ? 'checked' : '';
           connectorsDiv.innerHTML += `
@@ -538,6 +578,7 @@
 
       const workflowsDiv = document.getElementById('editWorkflows');
       workflowsDiv.innerHTML = '';
+      workflows.sort((a, b) => a.workflowName.localeCompare(b.workflowName));
       workflows.forEach(w => {
         const checked = entity.workflows?.includes(w.workflowId) ? 'checked' : '';
         workflowsDiv.innerHTML += `
@@ -546,8 +587,19 @@
       });
     }
 
+    function showEditWorkflowModal(workflowId) {
+      const wf = workflows.find(e => e.workflowId === workflowId);
+
+      document.getElementById('editWorkflowModal').style.display = 'block';
+      document.getElementById('editWorkflowId').value = wf.workflowId;
+      document.getElementById('editWorkflowTitle').value = wf.workflowName;
+      document.getElementById('editWorkflowDescription').value = wf.workflowDescription;
+      document.getElementById('editWorkflowOwner').value = wf.owner;
+
+    }
+
     function copyTextToClibpoard(divId) {
-      let text = document.getElementById(divId).innerHTML
+      let text = document.getElementById(divId).innerText
       navigator.clipboard.writeText(text)
         .then(() => {
           alert("Text copied to clipboard");

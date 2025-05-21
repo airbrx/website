@@ -1,4 +1,4 @@
-let ecosystemData = [], workflows = [], ecomMeta = {};
+let ecosystemData = [], workflows = [], ecoMeta = {title: '', description: ''};
 let currentViewMode = 'all'; // 'all' or 'connected'
 let selectedEntityId = null;
 const params = new Proxy(new URLSearchParams(window.location.search), {
@@ -14,8 +14,8 @@ if (params.project)  {
   ).done(function(ecoDefault) {
       ecosystemData = ecoDefault.ecosystem;
       workflows = ecoDefault.workflows;
-      ecomMeta.title = ecoDefault.title
-      ecomMeta.description = ecoDefault.description
+      ecoMeta.title = ecoDefault.title
+      ecoMeta.description = ecoDefault.description
 
       localStorage.setItem("ecosystemData", JSON.stringify(ecosystemData));
       localStorage.setItem("workflows", JSON.stringify(workflows));
@@ -51,21 +51,25 @@ else {
 }
 const svg = d3.select("svg"), width = window.innerWidth, height = window.innerHeight, maxTextWidth = 140;
 
-console.log(projectId)
-
 function buildWorkflowMenu() {
   const ul = document.getElementById("workflowList");
   ul.innerHTML = '';
   workflows.forEach(wf => {
     const li = document.createElement('li');
     li.innerHTML = `
-      <span onclick="filterByWorkflow('${wf.workflowId}')" style="cursor:pointer"><strong>${wf.workflowName}</strong></span>
+      <span onclick="filterByWorkflow('${wf.workflowId}')" style="cursor:pointer">${wf.workflowName}</span>
     `;
     ul.appendChild(li);
   });
 }
 
 function renderWireframe(filterWorkflowId = null) {
+  if (!filterWorkflowId) {
+    document.getElementById("ecosystemdesc").innerHTML = `
+      <h1>${ecoMeta.title}</h1>
+      <p>${ecoMeta.description}</p>
+    `
+  }
   persistData();
   svg.selectAll("*").remove();
 
@@ -74,8 +78,7 @@ function renderWireframe(filterWorkflowId = null) {
     const selected = ecosystemData.find(e => e.entityId === selectedEntityId);
     const connectedIds = new Set([selectedEntityId, ...(selected.connectors || [])]);
     nodes = ecosystemData.filter(e => connectedIds.has(e.entityId));
-  }
-  else {
+  } else {
     nodes = ecosystemData;
   }
 
@@ -91,21 +94,27 @@ function renderWireframe(filterWorkflowId = null) {
     });
   });
 
+  const container = svg.append("g").attr("class", "container");
+
   const simulation = d3.forceSimulation(nodes)
     .force("link", d3.forceLink(links).id(d => d.entityId).distance(200))
     .force("charge", d3.forceManyBody().strength(-500))
     .force("center", d3.forceCenter(width / 2, height / 2))
     .force("collide", d3.forceCollide(100));
 
-  const link = svg.append("g").selectAll("line").data(links).join("line").attr("class", "link");
+  const link = container.append("g").selectAll("line")
+    .data(links)
+    .join("line")
+    .attr("class", "link");
 
-  const node = svg.append("g").selectAll("g").data(nodes).join("g").attr("class", "node")
+  const node = container.append("g").selectAll("g")
+    .data(nodes)
+    .join("g")
+    .attr("class", "node")
     .on("click", function (event, d) {
       event.stopPropagation();
       currentViewMode = 'connected';
       selectedEntityId = d.entityId;
-
-
       renderWireframe();
     });
 
@@ -139,81 +148,63 @@ function renderWireframe(filterWorkflowId = null) {
       .attr("rx", maxTextWidth / 2 + 10).attr("ry", ry + 5)
       .attr("stroke", d.entityId === selectedEntityId ? "#0000ff" : "#222")
       .attr("stroke-width", d.entityId === selectedEntityId ? 4 : 2);
+
+    group.append("rect")
+      .attr("class", "description-box")
+      .attr("x", -maxTextWidth / 2)
+      .attr("y", 45)
+      .attr("width", 200)
+      .attr("height", 0)
+      .attr("rx", 8)
+      .attr("ry", 8)
+      .attr("fill", "#f2f2f2")
+      .attr("stroke", "#505050")
+      .attr("stroke-width", 1);
+
+    if (d.entityId === selectedEntityId) {
+      const foWidth = 200;
       const yOffset = 45;
-
-      group.append("ellipse")
-        .lower()
-        .attr("rx", maxTextWidth / 2 + 10)
-        .attr("ry", ry + 5)
-        .attr("stroke", d.entityId === selectedEntityId ? "#0000ff" : "#222")
-        .attr("stroke-width", d.entityId === selectedEntityId ? 4 : 2);
-
-      group.append("rect")
-        .attr("class", "description-box")
-        .attr("x", -maxTextWidth / 2)
+      const foreignObject = group.append("foreignObject")
+        .attr("x", -foWidth / 2)
         .attr("y", yOffset)
-        .attr("width", 200)
-        .attr("height", 0)
-        .attr("rx", 8)
-        .attr("ry", 8)
-        .attr("fill", "#f2f2f2")
-        .attr("stroke", "#505050")
-        .attr("stroke-width", 1);
+        .attr("width", foWidth)
+        .attr("height", 1)
+        .raise();
 
-      // Text and interactivity
-      if (d.entityId === selectedEntityId) {
-        const foWidth = 200;
-        const yOffset = 45;
+      const div = foreignObject.append("xhtml:div")
+        .attr("xmlns", "http://www.w3.org/1999/xhtml")
+        .style("box-sizing", "border-box")
+        .style("width", `${foWidth}px`)
+        .style("padding", "10px")
+        .style("background", "#f2f2f2")
+        .style("border", "1px solid #505050")
+        .style("border-radius", "8px")
+        .style("font-size", "14px")
+        .style("color", "#000")
+        .style("cursor", "default")
+        .style("z-index", 10000)
+        .html(`
+          <span style="float: right; cursor: pointer;" id="close-${d.entityId}">
+          [x]
+         </span><br/>${d.description}<br/><br/><br/>
+        `);
 
-        const foreignObject = group.append("foreignObject")
-          .attr("x", -foWidth / 2)
-          .attr("y", yOffset)
-          .attr("width", foWidth)
-          .attr("height", 1) // Temporarily small height, will be updated
-          foreignObject.raise()
+      setTimeout(() => {
+        const domElement = div.node();
+        const actualHeight = domElement.scrollHeight;
+        foreignObject.attr("height", actualHeight + 10);
+      }, 0);
 
-        const div = foreignObject.append("xhtml:div")
-          .attr("xmlns", "http://www.w3.org/1999/xhtml")
-          .style("box-sizing", "border-box")  // ← This is key!
-          .style("width", `${foWidth}px`)
-          .style("padding", "10px")
-          .style("background", "#f2f2f2")
-          .style("border", "1px solid #505050")
-          .style("border-radius", "8px")
-          .style("font-size", "14px")
-          .style("color", "#000")
-          .style("cursor", "default")
-          .style("z-index", 10000)
-          .html(`
-            <span style="float: right; cursor: pointer;" id="close-${d.entityId}">
-            [x]
-           </span>
-           <br/>
-           ${d.description}<br />
-           <Br/>
-           <Br/>
-
-          `);
-
-        // Use timeout to let the browser render before measuring
-        setTimeout(() => {
-          const domElement = div.node();
-          const actualHeight = domElement.scrollHeight;
-          foreignObject.attr("height", actualHeight + 10);
-        }, 0);
-
-        // Attach event listener to the icon
-        setTimeout(() => {
-          const closeme = document.getElementById(`close-${d.entityId}`);
-          if (closeme) {
-            closeme.onclick = (event) => {
-              event.stopPropagation();
-              closeme.parentNode.style.display='none';
-
-            };
-          }
-        }, 0);
-      }
+      setTimeout(() => {
+        const closeme = document.getElementById(`close-${d.entityId}`);
+        if (closeme) {
+          closeme.onclick = (event) => {
+            event.stopPropagation();
+            closeme.parentNode.style.display = 'none';
+          };
+        }
+      }, 0);
+    }
   });
 
   simulation.on("tick", () => {
@@ -227,6 +218,30 @@ function renderWireframe(filterWorkflowId = null) {
       d.y = Math.max(50, d.y);
       return `translate(${d.x},${d.y})`;
     });
+  });
+
+  // 🔁 When simulation ends, fit to canvas
+  simulation.on("end", () => {
+    const allX = nodes.map(d => d.x);
+    const allY = nodes.map(d => d.y);
+    const minX = Math.min(...allX);
+    const maxX = Math.max(...allX);
+    const minY = Math.min(...allY);
+    const maxY = Math.max(...allY);
+
+    const boundsWidth = maxX - minX;
+    const boundsHeight = maxY - minY;
+
+    const scale = Math.min(
+      width / (boundsWidth + 100),
+      height / (boundsHeight + 100),
+      1
+    );
+
+    const translateX = (width - boundsWidth * scale) / 2 - minX * scale;
+    const translateY = (height - boundsHeight * scale) / 2 - minY * scale;
+
+    container.attr("transform", `translate(${translateX},${translateY}) scale(${scale})`);
   });
 }
 
@@ -260,8 +275,15 @@ function persistData() {
   localStorage.setItem("workflows", JSON.stringify(workflows));
 }
 
-function filterByWorkflow(id) {
-  renderWireframe(id);
+function filterByWorkflow(workflowId) {
+  const index = workflows.findIndex(e => e.workflowId === workflowId);
+  if (index === -1) return;
+  let html = `
+    <h1>${workflows[index].workflowName}</h1>
+    <p>${workflows[index].workflowDescription}</p>
+  `
+  document.getElementById('ecosystemdesc').innerHTML = html
+  renderWireframe(workflowId);
 }
 
 function showAddWorkflow() {
