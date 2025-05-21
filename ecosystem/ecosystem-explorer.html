@@ -50,13 +50,21 @@
       transition: width 0.3s ease;
     }
     #toggleSidebarBtn {
-      position: fixed; top: 150px; left: 260px; z-index: 10000; background-color: #ccc;
-      border: none; padding: 5px 10px; cursor: pointer;
+      position: fixed;
+      top: 200px;
+      left: 260px;
+      z-index: 10000;
+      background-color: #ccc;
+      border: none;
+      padding: 5px 10px;
+      cursor: pointer;
     }
-    .sidebar.collapsed + #toggleSidebarBtn {
+
+    #toggleSidebarBtn.collapsed {
       left: 10px;
-      top: 0px;
+      top: 200px;
     }
+
     .modal {
       display: none; position: fixed; top: 10%; left: 10%; width: 80%; height: 80%;
       background: white; overflow: auto; border: 1px solid #888; z-index: 9999;
@@ -76,7 +84,7 @@
   </header>
   </div>
   <button id="menu-toggle" aria-label="Toggle Menu">&#9776;</button>
-  <!-- button id="toggleSidebarBtn" onclick="toggleSidebar()">⏴</button -->
+  <button id="toggleSidebarBtn" onclick="toggleSidebar()">⏴</button>
 
 
   <nav class="menu" id="menu">

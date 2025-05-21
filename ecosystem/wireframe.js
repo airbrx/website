@@ -381,8 +381,10 @@ function refreshFromFile() {
 function toggleSidebar() {
   const sidebar = document.getElementById('workflowSidebar');
   const toggleBtn = document.getElementById('toggleSidebarBtn');
-  sidebar.classList.toggle('collapsed');
-  toggleBtn.innerHTML = sidebar.classList.contains('collapsed') ? '⏵' : '⏴';
+  const isCollapsed = sidebar.classList.toggle('collapsed');
+
+  toggleBtn.classList.toggle('collapsed', isCollapsed);
+  toggleBtn.innerHTML = isCollapsed ? '⏵' : '⏴';
 }
 
 function refreshFromJson() {

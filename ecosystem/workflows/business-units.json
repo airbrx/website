@@ -1,6 +1,6 @@
 {
   "title": "Business Units",
-  "description": "This will describe the organizational structure of the company and how different stakeholders are doing similar things independtly",
+  "description": "This will describe the organizational structure of the company and how different stakeholders are doing similar things independtly<br/><br/><div style=\"width:100%;text-align:left;color:#fd6c1d;cursor:pointer\" onclick=\"window.location.href='ecosystem-explorer.html?project=adspend-chaos.json'\"><b>&lt;&lt; Previous: Online Ad Agency Data Ecosystem Chaos</div>",
   "ecosystem": [
     {
       "entityId": "0080feab-c68c-4423-85f2-98068fb5d4d1",
