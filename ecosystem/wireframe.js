@@ -52,6 +52,9 @@ else {
 const svg = d3.select("svg"), width = window.innerWidth, height = window.innerHeight, maxTextWidth = 140;
 
 function buildWorkflowMenu() {
+  workflows.sort((x, y) => x.workflowName.localeCompare(y.workflowName));
+
+console.log(workflows)
   const ul = document.getElementById("workflowList");
   ul.innerHTML = '';
   workflows.forEach(wf => {
@@ -98,7 +101,7 @@ function renderWireframe(filterWorkflowId = null) {
 
   const simulation = d3.forceSimulation(nodes)
     .force("link", d3.forceLink(links).id(d => d.entityId).distance(200))
-    .force("charge", d3.forceManyBody().strength(-500))
+    .force("charge", d3.forceManyBody().strength(-75))
     .force("center", d3.forceCenter(width / 2, height / 2))
     .force("collide", d3.forceCollide(100));
 

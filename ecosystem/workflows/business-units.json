@@ -1,20 +1,152 @@
 {
-  "title": "Business Units",
-  "description": "This will describe the organizational structure of the company and how different stakeholders are doing similar things independtly<br/><br/><div style=\"width:100%;text-align:left;color:#fd6c1d;cursor:pointer\" onclick=\"window.location.href='ecosystem-explorer.html?project=adspend-chaos.json'\"><b>&lt;&lt; Previous: Online Ad Agency Data Ecosystem Chaos</div>",
+  "title": "Key Special Considerations for AdTech",
+  "description": "<ul><li>Latency and scale are strategic concerns: Engineering and infrastructure must operate under strict latency (ms-level bidding) and massive throughput.</li><li>Regulatory compliance is a risk factor: Legal and privacy roles are not just reactive but critical to product development.</li><li>Revenue and margin depend on optimization: Data science and algorithmic bidding are revenue drivers, not just support functions.</li><li>Market dynamics evolve fast: Partnerships, M&A, and GTM strategies must adapt quickly to industry shifts (e.g., cookie deprecation, UID2, privacy sandbox).</li></ul><br/><br/><div style=\"width:100%;text-align:left;color:#fd6c1d;cursor:pointer\" onclick=\"window.location.href='ecosystem-explorer.html?project=adspend-chaos.json'\"><b>&lt;&lt; Previous: Online Ad Agency Data Ecosystem Chaos</div>",
   "ecosystem": [
     {
-      "entityId": "0080feab-c68c-4423-85f2-98068fb5d4d1",
-      "title": "Default Entity",
-      "description": "this is a placeholder for a process or system that gets consumed during a data flow",
+      "entityId": "3a33da9c-1372-463d-8abc-27cc0b9a5d6f",
+      "title": "Chief Executive Officer (CEO)",
+      "description": "Owns strategy, vision, fundraising, and board communication.",
+      "connectors": [
+        "0080feab-c68c-4423-85f2-98068fb5d4d1",
+        "ac1f589e-7c9e-4bb1-bc70-3c6ce5ab6070"
+      ],
+      "workflows": [
+        "9d2db792-0027-4c73-98e4-5418910730bc"
+      ]
+    },
+    {
+      "entityId": "ac1f589e-7c9e-4bb1-bc70-3c6ce5ab6070",
+      "title": "Chief Financial Officer (CFO)",
+      "description": "Manages revenue recognition (especially critical in programmatic), investor relations, and regulatory compliance.",
+      "connectors": [
+        "3a33da9c-1372-463d-8abc-27cc0b9a5d6f",
+        "0080feab-c68c-4423-85f2-98068fb5d4d1"
+      ],
+      "workflows": [
+        "9d2db792-0027-4c73-98e4-5418910730bc"
+      ]
+    },
+    {
+      "entityId": "a3b98863-2d14-4b68-b6b9-f5e41b1722de",
+      "title": "Chief Marketing Officer (CMO)",
+      "description": "Balances performance-driven growth with industry credibility.",
       "connectors": [],
-      "workflows": []
+      "workflows": [
+        "4e1aa3b0-bdfc-4745-875f-8859f84ac7c4"
+      ]
+    },
+    {
+      "entityId": "0080feab-c68c-4423-85f2-98068fb5d4d1",
+      "title": "Chief Operating Officer (COO)",
+      "description": "Ensures coordination across departments, owns OKRs, and drives operational execution.",
+      "connectors": [
+        "3a33da9c-1372-463d-8abc-27cc0b9a5d6f",
+        "ac1f589e-7c9e-4bb1-bc70-3c6ce5ab6070"
+      ],
+      "workflows": [
+        "9d2db792-0027-4c73-98e4-5418910730bc"
+      ]
+    },
+    {
+      "entityId": "3e56fefb-eacc-4a4e-8824-d4a43c6d2570",
+      "title": "Chief People Officer (CPO)",
+      "description": "Crucial for talent retention in a competitive industry.",
+      "connectors": [],
+      "workflows": [
+        "fe93dce4-3e4d-4a2c-a548-e929c84adf64"
+      ]
+    },
+    {
+      "entityId": "aadfc4fa-f9c1-4378-a2ff-e0f7909cf048",
+      "title": "Chief Product Officer (CPO)",
+      "description": "Guides roadmap for ad serving, real-time bidding (RTB), targeting, and reporting tools.\n\n<ul>\n<li>Ad Platform UX & Tools (Bid manager, campaign builder, APIs)</li>\n\n<li>Targeting & Audience Tools (Segments, lookalike models, contextual tools)</li>\n\n<li>Marketplace / Exchange Features (Inventory controls, floors, auction logic)</li>\n</ul>",
+      "connectors": [
+        "66e93c01-22e9-46cb-83a9-3452e5db8854"
+      ],
+      "workflows": [
+        "7a1b5743-58bb-4a59-896a-19bdce90e1b4"
+      ]
+    },
+    {
+      "entityId": "491d2326-e686-453e-86f2-1a4ff99a7759",
+      "title": "Chief Revenue Officer (CRO)",
+      "description": "Owns all client-facing revenue efforts on both demand and supply sides.\n\n<ul>\n<li>Advertiser Sales (Agencies, brands, trading desks)</li>\n<li>Publisher Partnerships (SSP/Exchange integrations, supply deals)</li>\n<li>Client Success / Account Management (Onboarding, retention, performance)</li>\n<li>Ad Operations (Campaign trafficking, monitoring, troubleshooting)</li>\n</ul>\n",
+      "connectors": [],
+      "workflows": [
+        "b01958a3-47e9-4ee6-86d0-cd2ff8eb5d65"
+      ]
+    },
+    {
+      "entityId": "66e93c01-22e9-46cb-83a9-3452e5db8854",
+      "title": "Chief Technology Officer (CTO)",
+      "description": "Owns the architecture and performance of the real-time bidding system and infrastructure.\n\n<ul>\n<li>RTB Infrastructure (Low-latency, high-throughput bidding systems)</li>\n\n<li>Data Infrastructure (Clickstream data, log-level events, Kafka, Spark, etc.)</li>\n\n<li>DevOps / SRE (Uptime, incident response, scalability)</li>\n\n<li>Security & Privacy Engineering</li>\n</ul>",
+      "connectors": [
+        "aadfc4fa-f9c1-4378-a2ff-e0f7909cf048"
+      ],
+      "workflows": [
+        "7a1b5743-58bb-4a59-896a-19bdce90e1b4"
+      ]
+    },
+    {
+      "entityId": "c3d0c765-4f02-4d61-9b9f-3e8c86a36d1f",
+      "title": "General Counsel / Chief Legal Officer",
+      "description": "Especially important for compliance with data regulations and ad policy.",
+      "connectors": [],
+      "workflows": [
+        "81216332-65b4-40fd-850e-879f389338f6"
+      ]
+    },
+    {
+      "entityId": "3f49b21e-9e9c-4050-87a2-d4c839279994",
+      "title": "VP / Head of Data Science",
+      "description": "Core to differentiation in ad performance and margin.\n\n<ul>\n<li>Bidding Algorithms / ML Optimization (eCPM prediction, win-rate modeling)</li>\n<li>Fraud Detection / Quality Scoring (IVT filtering, supply path optimization)</li>\n<li>Attribution Modeling (Multi-touch attribution, incrementally)</li>\n<li>Audience Modeling (LTV, churn, lookalikes)</li>\n</ul>",
+      "connectors": [],
+      "workflows": [
+        "66f9de9f-8a8c-44cb-9c73-28f95a2dc223"
+      ]
     }
   ],
   "workflows": [
     {
-      "workflowId": "74728c6c-714d-4036-82a9-b23169228dfb",
-      "workflowName": "Default Workflow",
-      "workflowDescription": "This should be nice rich text",
+      "workflowId": "66f9de9f-8a8c-44cb-9c73-28f95a2dc223",
+      "workflowName": "4. Data & AI",
+      "workflowDescription": "Data science and machine learning powering targeting and bidding optimization.",
+      "owner": "Michael"
+    },
+    {
+      "workflowId": "9d2db792-0027-4c73-98e4-5418910730bc",
+      "workflowName": "1. Executive Leadership",
+      "workflowDescription": "CEO, COO, and CFO functions driving strategic alignment and financial management.",
+      "owner": "Michael"
+    },
+    {
+      "workflowId": "81216332-65b4-40fd-850e-879f389338f6",
+      "workflowName": "6. Legal, Policy & Privacy",
+      "workflowDescription": "Regulatory compliance, contract management, and trust & safety.",
+      "owner": "Michael"
+    },
+    {
+      "workflowId": "4e1aa3b0-bdfc-4745-875f-8859f84ac7c4",
+      "workflowName": "5. Marketing & Industry Relations",
+      "workflowDescription": "Growth marketing, brand awareness, and industry positioning.",
+      "owner": "Michael"
+    },
+    {
+      "workflowId": "fe93dce4-3e4d-4a2c-a548-e929c84adf64",
+      "workflowName": "7. People & Culture",
+      "workflowDescription": "People operations and organizational culture management.",
+      "owner": "Michael"
+    },
+    {
+      "workflowId": "7a1b5743-58bb-4a59-896a-19bdce90e1b4",
+      "workflowName": "3. Product & Engineering",
+      "workflowDescription": "Product development and technical infrastructure supporting RTB systems.",
+      "owner": "Michael"
+    },
+    {
+      "workflowId": "b01958a3-47e9-4ee6-86d0-cd2ff8eb5d65",
+      "workflowName": "2. Revenue & Commercial",
+      "workflowDescription": "Client-facing and revenue-driving operations including partnerships and account management.",
       "owner": "Michael"
     }
   ]
