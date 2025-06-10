@@ -380,3 +380,36 @@ header {
 .actions input:hover {
   background-color: #A08D2D; /* Gold */
 }
+
+.people-container {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  margin-bottom: 2rem;
+  flex-wrap: wrap; /* Ensures wrapping on small screens */
+}
+
+.people-image img {
+  max-width: 250px;
+  border-radius: 50%;
+  height: auto;
+}
+
+.people-text {
+  flex: 1;
+  min-width: 250px;
+}
+
+/* Responsive stack for mobile */
+@media (max-width: 768px) {
+  .people-container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .people-text {
+    text-align: left;
+    width: 100%;
+  }
+}

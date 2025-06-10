@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Airbrx - Articles</title>
+    <meta property="og:title" content="Airbrx - Adtech OKRs and KPIs" />
+		<meta property="og:description" content="" />
+		<meta property="og:image" content="https://airbrx.com/placeholder.jpg" />
+		<meta property='og:url' content="https://airbrx.com/articles.html"/>
+
+    <script src="/js/jquery.1.8.3.min.js"></script>
+    <script src="/js/webtools.js"></script>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mystery+Quest&display=swap" rel="stylesheet">
+    <style>
+    .article-item {
+        display: flex;
+        flex-direction: row; /* default for desktop */
+        align-items: flex-start;
+        gap: 10px;
+        margin-bottom: 15px;
+        cursor: pointer;
+        max-width: 800px;
+        text-align: left;
+    }
+
+    .article-item img {
+        width: 200px;
+        height: auto;
+        flex-shrink: 0;
+    }
+
+    .article-text {
+        flex-grow: 1;
+    }
+
+    /* Responsive behavior for smaller screens */
+    @media (max-width: 600px) {
+        .article-item {
+            flex-direction: column;
+            align-items: center; /* optional: center items for mobile */
+            text-align: center;
+        }
+
+        .article-item img {
+            width: 100%; /* full width image on small screens */
+        }
+
+        .article-text {
+            text-align: left; /* or center, depending on design preference */
+        }
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 3em;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 12px;
+      vertical-align: top;
+    }
+    th {
+      background-color: #f4f4f4;
+      text-align: left;
+    }
+    </style>
+  </head>
+<body>
+
+  <button id="menu-toggle" aria-label="Toggle Menu">&#9776;</button>
+  <div style="width:100%">
+  <header onclick="window.location.href='/'" style="cursor:pointer">
+    <img id=logo src="/logos/logo.png">
+    <h1 id="headertitle">Airbrx</h1>
+    <p id="headerblurb">Unlocking Business Value from Your Data</p>
+  </header>
+  </div>
+    <div class="container">
+        <nav class="menu" id="menu">
+
+        </nav>
+        <main class="content">
+          <br /><br/>
+            <div id="articles" class="article">
+              <h1>OKRs and KPIs</h1>
+
+              <p>It is critical to understand the business goals to align the technoglogy to support those goals. In this case 'Adtech' operates in a highly competitive, fast-moving digital advertising ecosystem. To remain relevant and profitable, it needs to:</p>
+
+              <UL>
+                <li>Leverage data as a core asset for innovation and operational scale.
+
+                <li>Modernize its infrastructure to handle large volumes of real-time data.
+
+                <li>Enable cross-functional teams with timely insights for smarter decision-making.
+
+                <li>Drive measurable outcomes that align with revenue and product success.
+              </UL>
+              <p>These OKRs were designed to align teams around business-critical outcomes that transform how data powers every function—from engineering to analytics to go-to-market.</p>
+              <br />
+              <hr/>
+              <br/>
+              <h2>OKR 1: Build a Strategic Data Operations Foundation</h2>
+              <table>
+                <tr>
+                  <th>Objective</th>
+                  <td>Establish a unified, scalable, and intelligent data platform to power operational efficiency, product innovation, and revenue growth.</td>
+                </tr>
+                <tr>
+                  <th>KPI&nbsp;KR1.1</th>
+                  <td>Complete migration of 80% of core data sources to a centralized Lakehouse.</td>
+                </tr>
+                <tr>
+                  <th>KPI&nbsp;KR1.2</th>
+                  <td>Reduce data engineering backlog by 50% through standardized pipelines.</td>
+                </tr>
+                <tr>
+                  <th>KPI&nbsp;KR1.3</th>
+                  <td>Launch Data Governance Council with quarterly reviews and published standards.</td>
+                </tr>
+                <tr>
+                  <th>KPI&nbsp;KR1.4</th>
+                  <td>Deliver 5 high-impact use cases powered by the new platform within 12 months.</td>
+                </tr>
+              </table>
+
+              <h2>OKR 2: Data & Platform Engineering</h2>
+              <table>
+                <tr>
+                  <th>Objective</th>
+                  <td>Modernize data infrastructure to support real-time, high-volume adtech workloads and analytics.</td>
+                </tr>
+                <tr>
+                  <th>KPI&nbsp;KR2.1</th>
+                  <td>Consolidate 90% of pipelines under a single orchestration layer.</td>
+                </tr>
+                <tr>
+                  <th>KPI&nbsp;KR2.2</th>
+                  <td>Implement unified data catalog and lineage tools.</td>
+                </tr>
+                <tr>
+                  <th>KPI&nbsp;KR2.3</th>
+                  <td>Achieve >99% uptime and &lt;5 min SLA for critical data pipelines.</td>
+                </tr>
+                <tr>
+                  <th>KPI&nbsp;KR2.4</th>
+                  <td>Deliver modular pipeline framework adopted by at least 3 teams.</td>
+                </tr>
+              </table>
+
+              <h2>OKR 3: Analytics & Data Science</h2>
+              <table>
+                <tr>
+                  <th>Objective</th>
+                  <td>Empower teams with timely, trusted data for decision-making and model innovation.</td>
+                </tr>
+                <tr>
+                  <th>KPI&nbsp;KR3.1</th>
+                  <td>Deliver self-serve analytics layer with curated data marts.</td>
+                </tr>
+                <tr>
+                  <th>KPI&nbsp;KR3.2</th>
+                  <td>Automate data quality checks on 100% of production datasets.</td>
+                </tr>
+                <tr>
+                  <th>KPI&nbsp;KR3.3</th>
+                  <td>Reduce model experimentation and deployment time by 40%.</td>
+                </tr>
+                <tr>
+                  <th>KPI&nbsp;KR3.4</th>
+                  <td>Train 50+ team members via internal certification program.</td>
+                </tr>
+              </table>
+
+              <h2>OKR 4: Product & Business Enablement</h2>
+              <table>
+                <tr>
+                  <th>Objective</th>
+                  <td>Use data to directly enable product value and revenue optimization.</td>
+                </tr>
+                <tr>
+                  <th>KPI&nbsp;KR4.1</th>
+                  <td>Launch real-time insights dashboard for 100% of top-tier clients.</td>
+                </tr>
+                <tr>
+                  <th>KPI&nbsp;KR4.2</th>
+                  <td>Operationalize LTV and churn models into 2+ core products.</td>
+                </tr>
+                <tr>
+                  <th>KPI&nbsp;KR4.3</th>
+                  <td>Improve campaign visibility through enhanced attribution instrumentation.</td>
+                </tr>
+                <tr>
+                  <th>KPI&nbsp;KR4.4</th>
+                  <td>Cut onboarding time for new publishers/advertisers by 30%.</td>
+                </tr>
+              </table>
+
+              <h2>OKR 5: Organizational Change & Data Culture</h2>
+              <table>
+                <tr>
+                  <th>Objective</th>
+                  <td>Shift the company from siloed data thinking to a data product and platform mindset.</td>
+                </tr>
+                <tr>
+                  <th>KPI&nbsp;KR5.1</th>
+                  <td>Implement federated data product model in 3 business domains.</td>
+                </tr>
+                <tr>
+                  <th>KPI&nbsp;KR5.2</th>
+                  <td>Transition 75% of reporting off spreadsheets to governed BI tools.</td>
+                </tr>
+                <tr>
+                  <th>KPI&nbsp;KR5.3</th>
+                  <td>Run “Data Champions” program with reps from all functions.</td>
+                </tr>
+                <tr>
+                  <th>KPI&nbsp;KR5.4</th>
+                  <td>Conduct quarterly DataOps health checks with transparent updates.</td>
+                </tr>
+              </table>
+            </div>
+          </main>
+      </div>
+      <script>
+        menu()
+        pageContent()
+      </script>
+
+      <hr>
+      <p><center>&copy; 2025 Airbrx</center></p>
+      <br />
+  </body>

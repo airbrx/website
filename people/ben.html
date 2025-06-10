@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Airbrx - Ben Tallman CEO</title>
+    <meta property="og:title" content="Airbrx - Ben Tallman CEO" />
+		<meta property="og:description" content="Airbrx - Ben Tallman CEO" />
+		<meta property="og:image" content="https://airbrx.com/assets/team/ben-tallman.png" />
+		<meta property='og:url' content="https://airbrx.com/people/ben.html"/>
+
+    <script src="/js/jquery.1.8.3.min.js"></script>
+    <script src="/js/webtools.js"></script>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <style>
+      .button-group {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        margin-bottom: 1em;
+      }
+
+      .btn.full-width {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        padding: 12px;
+        font-size: 1em;
+        text-align: center;
+        text-decoration: none;
+        border-radius: 6px;
+        color: #fff;
+        background-color: #0077b5; /* Default: LinkedIn Blue */
+        transition: background-color 0.2s ease;
+      }
+
+      .btn.full-width[href$=".vcf"] {
+        background-color: #666; /* Darker gray for vCard */
+      }
+
+      .btn.full-width:hover {
+        background-color: #005983;
+      }
+
+      .btn.full-width[href$=".vcf"]:hover {
+        background-color: #444;
+      }
+
+      .btn.full-width i {
+        margin-right: 8px;
+        font-size: 1.2em;
+      }
+    </style>
+</head>
+<body>
+
+  <button id="menu-toggle" aria-label="Toggle Menu">&#9776;</button>
+  <div style="width:100%">
+  <header onclick="window.location.href='/'" style="cursor:pointer">
+    <img id=logo src="/logos/logo.png">
+    <h1 id="headertitle">Airbrx</h1>
+    <p id="headerblurb">Unlocking Business Value from Your Data</p>
+  </header>
+  </div>
+    <div class="container">
+        <nav class="menu" id="menu">
+
+        </nav>
+        <main class="content">
+              <div id="workspace" style="width:100%">
+
+              <div id="mainarticle">
+                <div id="article" class="article">
+                  <div class="people-container">
+                    <div class="people-image">
+                      <img src="/assets/team/ben-tallman.png" alt="Ben Tallman">
+                    </div>
+                    <div class="people-text">
+                      <h1>Ben Tallman</h1>
+                      <Br/>
+                      <div class="button-group">
+                        <a href="/people/btallman.vcf" download class="btn full-width">
+                          <i class="fa fa-address-card"></i> Add to Contacts
+                        </a>
+                        <a href="https://www.linkedin.com/in/btallman/" target="_blank" class="btn full-width">
+                          <i class="fa fa-linkedin"></i> LinkedIn Profile
+                        </a>
+                      </div>
+                      <br/>
+                      <p>
+                        Passionate about transforming businesses through data-driven strategies, Benjamin excels at building high-performing teams and cultivating strong industry relationships. His track record at M Science, Apigee and WaveQ demonstrates an exceptional ability to translate strategic vision into tangible outcomes, consistently delivering significant financial returns and operational efficiencies.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div id="grid-container"></div>
+            </div>
+            <br />
+            <div id="submenu" style="width:100%"></div>
+        </main>
+    </div>
+    <script>
+      menu()
+      pageContent()
+    </script>
+
+    <hr>
+    <p><center>&copy; 2025 Airbrx</center></p>
+    <br />
+</body>

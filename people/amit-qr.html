@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <script src="/js/webtools.js"></script>
+
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: #000;
+      overflow: hidden;
+    }
+
+    #wrapper {
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      transition: transform 0.3s ease;
+    }
+
+    @media screen and (orientation: landscape) {
+      img {
+        transform: rotate(270deg);
+        max-width: 85vh; /* slightly reduced to avoid overlap */
+        max-height: 85vw;
+      }
+    }
+
+    /* Fullscreen button */
+    #fullscreen-btn {
+      position: fixed;
+      top: 12px;
+      left: 12px;
+      width: 36px;
+      height: 36px;
+      background: rgba(255, 255, 255, 0.15);
+      border: 2px solid #fff;
+      border-radius: 4px;
+      cursor: pointer;
+      z-index: 999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #fullscreen-btn::before {
+      content: "⛶"; /* Unicode for fullscreen icon */
+      color: white;
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+  <div id="wrapper">
+    <img src="amit-qr-code.png" alt="QR Code">
+  </div>
+  <div id="fullscreen-btn" title="Enter Fullscreen"></div>
+
+  <script>
+    // Fix viewport height on mobile
+    function setVh() {
+      const vh = window.innerHeight * 0.01;
+      document.documentElement.style.setProperty('--vh', `${vh}px`);
+      document.getElementById('wrapper').style.height = `${window.innerHeight}px`;
+    }
+    window.addEventListener('load', setVh);
+    window.addEventListener('resize', setVh);
+
+    // Fullscreen button logic
+    const fsBtn = document.getElementById('fullscreen-btn');
+    fsBtn.addEventListener('click', () => {
+      const el = document.documentElement;
+      if (!document.fullscreenElement) {
+        if (el.requestFullscreen) el.requestFullscreen();
+        else if (el.webkitRequestFullscreen) el.webkitRequestFullscreen(); // Safari
+      } else {
+        if (document.exitFullscreen) document.exitFullscreen();
+        else if (document.webkitExitFullscreen) document.webkitExitFullscreen(); // Safari
+      }
+    });
+  </script>
+</body>
+</html>
