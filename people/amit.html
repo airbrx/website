@@ -15,6 +15,47 @@
     <link rel="stylesheet" href="/css/font-awesome.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <style>
+      .button-group {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        margin-bottom: 1em;
+      }
+
+      .btn.full-width {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        padding: 12px;
+        font-size: 1em;
+        text-align: center;
+        text-decoration: none;
+        border-radius: 6px;
+        color: #fff;
+        background-color: #0077b5; /* Default: LinkedIn Blue */
+        transition: background-color 0.2s ease;
+      }
+
+      .btn.full-width[href$=".vcf"] {
+        background-color: #666; /* Darker gray for vCard */
+      }
+
+      .btn.full-width:hover {
+        background-color: #005983;
+      }
+
+      .btn.full-width[href$=".vcf"]:hover {
+        background-color: #444;
+      }
+
+      .btn.full-width i {
+        margin-right: 8px;
+        font-size: 1.2em;
+      }
+    </style>
 </head>
 <body>
 
@@ -41,11 +82,15 @@
                     </div>
                     <div class="people-text">
                       <h1>Amit Beria</h1>
+                      <div class="button-group">
+                        <a href="/people/amitberia.vcf" download class="btn full-width">
+                          <i class="fa fa-address-card"></i> Add to Contacts
+                        </a>
+                        <a href="https://www.linkedin.com/in/amitberia/" target="_blank" class="btn full-width">
+                          <i class="fa fa-linkedin"></i> LinkedIn
+                        </a>
+                      </div>
                       <p>
-                        <a href="https://www.linkedin.com/in/amitberia/" target="_blank">
-                          https://www.linkedin.com/in/amitberia/
-                        </a><br >
-                        amit@airbrx.com<br/>
                         <br />
                       </p>
                       <p>

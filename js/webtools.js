@@ -663,4 +663,5 @@ function getCookie(name) {
     }
   }
 }
+
 getFingerprint()

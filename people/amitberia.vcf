@@ -1,0 +1,11 @@
+BEGIN:VCARD
+VERSION:3.0
+PRODID:-//Apple Inc.//macOS 15.0//EN
+N:Beria;Amit;;;
+FN:Amit Beria
+ORG:Airbrx Inc;
+EMAIL;type=INTERNET;type=WORK;type=pref:amit@airbrx.com
+TEL;type=CELL;type=VOICE;type=pref:503-866-0308
+item1.URL;type=pref:https://airbrx.com
+item1.X-ABLabel:_$!<HomePage>!$_
+END:VCARD
