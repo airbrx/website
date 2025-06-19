@@ -122,20 +122,35 @@ function filterarticles(fitleredManfiest) {
 }
 
 function menu() {
-  pageContent()
+  pageContent();
 
-  var resp = '<UL>';
-  var menuItems = JSON.parse(getObjects(`/sitedata.json`))
+  var resp = '<ul class="menu">';
+  var menuItems = JSON.parse(getObjects(`/sitedata.json`));
+
   menuItems.pages.forEach(item => {
-      if (item.fileName != 'error.html') {
-        resp += `<li onclick="window.location.href='/${item.fileName}'">${item.pageName}</li>`
+    if (item.fileName !== 'error.html') {
+      resp += `<li class="menu-item">`;
+      resp += `<span onclick="window.location.href='/${item.fileName}'">${item.pageName}</span>`;
+
+      if (item.submenu && item.submenu.length > 0) {
+        resp += `<ul class="submenu">`;
+        item.submenu.forEach(sub => {
+          resp += `<li onclick="window.location.href='/${item.fileName}#${sub.anchor}'">${sub.title}</li>`;
+        });
+        resp += `</ul>`;
       }
-  })
-  resp += `</UL>`
+
+      resp += `</li>`;
+    }
+  });
+
+  resp += `</ul>`;
+
   if (articlemanifest.length > 20) {
-    resp += `<input type="text" id="searchTitle" placeholder="Search titles" oninput="filterArticlesByTitle()">`
+    resp += `<input type="text" id="searchTitle" placeholder="Search titles" oninput="filterArticlesByTitle()">`;
   }
-  document.getElementById("menu").innerHTML = resp
+
+  document.getElementById("menu").innerHTML = resp;
   return;
 }
 
@@ -664,4 +679,16 @@ function getCookie(name) {
   }
 }
 
-getFingerprint()
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll('.menu-item > span').forEach(span => {
+    span.addEventListener('click', (e) => {
+      // Only toggle submenu on mobile
+      if (window.innerWidth <= 768) {
+        e.preventDefault();
+        span.parentElement.classList.toggle('active');
+      }
+    });
+  });
+});
+
+  getFingerprint()

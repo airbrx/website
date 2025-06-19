@@ -91,16 +91,51 @@ header {
 }
 
 .menu li {
-    display: inline;
+    display: block;
+    position: relative;
     cursor: pointer;
     font-size: 1rem;
     color: white;
     padding: 10px 15px;
     border-radius: 5px;
     transition: background 0.3s;
+    white-space: nowrap;
 }
 
 .menu li:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* Submenu - Desktop */
+.submenu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: var(--menu-bg);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    min-width: 100%; /* Match parent width */
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    z-index: 1000;
+}
+
+.menu-item:hover > .submenu {
+    display: block;
+}
+
+.submenu li {
+    display: block;
+    padding: 10px 15px;
+    color: white;
+    cursor: pointer;
+    transition: background 0.3s;
+    width: 100%;
+}
+
+.submenu li:hover {
     background: rgba(255, 255, 255, 0.2);
 }
 
@@ -272,6 +307,10 @@ header {
     text-align:left;
 }
 
+#mainarticle td {
+  text-align: left;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
     header {
@@ -290,25 +329,43 @@ header {
     }
 
     .menu {
-        display: none;
         flex-direction: column;
-        width: 100%;
-        position: absolute;
-        top: 0px;
-        left: 0;
-        background: var(--menu-bg);
-        padding: 10px 0;
-    }
-
-    .menu.active {
-        display: flex;
+        align-items: stretch;
+        gap: 0;
+        padding: 0;
     }
 
     .menu li {
-        display: block;
-        padding: 10px;
-        text-align: center;
+        padding: 12px 20px;
+        width: 100%;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     }
+
+    .submenu {
+        position: static;
+        display: none;
+        background: none;
+        padding-left: 20px;
+        padding-top: 0;
+    }
+
+    .menu-item.active > .submenu {
+        display: block;
+    }
+
+    .submenu li {
+        padding: 10px 20px;
+        font-size: 0.95rem;
+        border: none;
+        background: none;
+    }
+
+    .menu-item > span::after {
+        content: " ▾";
+        float: right;
+        font-size: 0.8em;
+    }
+  }
 
     #hero {
         height: auto;
@@ -484,4 +541,26 @@ header {
   .slide-image img {
     margin-bottom: 1rem;
   }
+}
+
+.tooltip {
+  text-decoration: underline;
+}
+
+.tippy-box {
+  font-family: sans-serif;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  padding: 8px;
+}
+
+.tippy-box a {
+  color: #fd6c1d; 
+  text-decoration: underline;
+}
+
+.tippy-box strong {
+  color: #ffffff;
+  display: block;
+  margin-bottom: 4px;
 }

@@ -10,14 +10,47 @@
       ]
     },
     {
-      "fileName": "services.html",
-      "pageName": "Services",
-      "pageElements": []
+      "fileName": "data-and-ai-advisory-services.html",
+      "pageName": "Data &amp; AI Advisory",
+      "pageElements": [],
+      "submenu": [
+        {
+          "title": "Leadership Alignment",
+          "anchor": ""
+        },
+        {
+          "title": "Architecture & Platform Advisory",
+          "anchor": "architecture"
+        },
+        {
+          "title": "AI Governance Design",
+          "anchor": "governance"
+        }
+      ]
     },
     {
-      "fileName": "team.html",
-      "pageName": "About",
-      "pageElements": []
+      "fileName": "data-and-ai-delivery.html",
+      "pageName": "Data &amp; AI Delivery",
+      "pageElements": [],
+      "submenu": [
+        {
+          "title": "AI-Augmented Workflows",
+          "anchor" : ""
+        },
+        {
+          "title": "Platform Engineering",
+          "anchor" : "platform-engineering"
+        },
+        {
+          "title": "Accellerators & Resuabiity",
+          "anchor" : "reusablity"
+        },
+        {
+          "title": "Cost Optimization",
+          "anchor" : "optimization"
+        }
+
+      ]
     },
     {
       "fileName": "articles.html",

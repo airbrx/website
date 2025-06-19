@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Airbrx - Data Operations AI Maturity Model</title>
+    <meta property="og:title" content="Airbrx -  Data Operations AI Maturity Model" />
+		<meta property="og:description" content="This page breaks down the DataOps-AI Capability Maturity Model, a practical framework for assessing and evolving your organization's approach to data orchestration, governance, quality, access, AI readiness, and business alignment. Whether you're just getting started or operating at scale, you'll find clear levels, key capabilities, and outcomes to guide your journey." />
+    <meta property="og:image" content="https://airbrx.com/placeholder.jpg" />
+    <meta property='og:url' content="https://airbrx.com/data-ops-ai-maturity-model.html"/>
+
+    <script src="/js/jquery.1.8.3.min.js"></script>
+    <script src="/js/webtools.js"></script>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+</head>
+<body>
+
+  <button id="menu-toggle" aria-label="Toggle Menu">&#9776;</button>
+  <div style="width:100%">
+  <header onclick="window.location.href='/'" style="cursor:pointer">
+    <img id=logo src="/logos/logo.png">
+    <h1 id="headertitle">Airbrx</h1>
+    <p id="headerblurb">Unlocking Business Value from Your Data</p>
+  </header>
+  </div>
+    <div class="container">
+        <nav class="menu" id="menu">
+
+        </nav>
+        <main class="content">
+              <div id="hero" style="background-image: url('/assets/hero/gravity.png')">
+                <div class="floating-bubble">
+                  <h1><strong>DataOps-AI Capability Maturity Model</strong></h1>
+                </div>
+              </div>
+              <br /><br/>
+              <div id="mainarticle" class="article">
+                <p>This page breaks down the DataOps-AI Capability Maturity Model, a practical framework for assessing and evolving your organization's approach to data orchestration, governance, quality, access, AI readiness, and business alignment. Whether you're just getting started or operating at scale, you'll find clear levels, key capabilities, and outcomes to guide your journey.</p>
+                <br />
+                <br />
+                <hr />
+
+                  <table>
+                  <thead>
+                    <tr>
+                      <th>Dimension</th>
+                      <th>Focus</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><strong>Data Orchestration &amp; Architecture</strong></td>
+                      <td>Workflow management, lineage, infrastructure maturity</td>
+                    </tr>
+                    <tr>
+                      <td><strong>Data Governance &amp; Compliance</strong></td>
+                      <td>Policies, cataloging, auditability, privacy</td>
+                    </tr>
+                    <tr>
+                      <td><strong>Data Quality &amp; Reliability</strong></td>
+                      <td>Validation, observability, SLAs, data contracts</td>
+                    </tr>
+                    <tr>
+                      <td><strong>Access &amp; Enablement</strong></td>
+                      <td>Self-service, data literacy, C4E, collaboration tools</td>
+                    </tr>
+                    <tr>
+                      <td><strong>ML/AI Operational Readiness</strong></td>
+                      <td>Model lifecycle, feature management, ethics &amp; monitoring</td>
+                    </tr>
+                    <tr>
+                      <td><strong>Strategic Business Alignment</strong></td>
+                      <td>KPIs, monetization of data, business-led product thinking</td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <hr />
+
+                <h2><strong>Maturity Levels</strong></h2>
+
+                <h3><strong>Level 1: Ad Hoc</strong></h3>
+                <ul>
+                  <li><strong>Data:</strong> Siloed scripts, minimal orchestration. No central governance or catalog.</li>
+                  <li><strong>AI:</strong> Experimentation only. No reproducibility, security, or visibility.</li>
+                  <li><strong>Business:</strong> Analytics disconnected from outcomes.</li>
+                </ul>
+
+                <hr />
+
+                <h3><strong>Level 2: Reactive</strong></h3>
+                <ul>
+                  <li><strong>Data:</strong> Ingestion and transformation processes stabilized using some orchestration (e.g., cron jobs, Lambdas).</li>
+                  <li><strong>AI:</strong> Initial notebooks/models developed by isolated teams. No production deployment patterns.</li>
+                  <li><strong>Business:</strong> Insights used manually, KPIs inconsistently tied to data assets.</li>
+                </ul>
+
+                <hr />
+
+                <h3><strong>Level 3: Standardized <em>(Baseline Target for Modern DataOps)</em></strong></h3>
+                <ul>
+                  <li><strong>Data:</strong>
+                    <ul>
+                      <li>Airflow (Astronomer) orchestrates all ingestion and transformations.</li>
+                      <li>Databricks Lakehouse manages the bronze → gold flow.</li>
+                      <li>Unity Catalog applied across tables for access and lineage.</li>
+                    </ul>
+                  </li>
+                  <li><strong>AI:</strong>
+                    <ul>
+                      <li>Centralized model development with defined environments.</li>
+                      <li>Some features managed centrally (early feature store).</li>
+                      <li>Deployment via Databricks MLflow or similar, but limited monitoring.</li>
+                    </ul>
+                  </li>
+                  <li><strong>Business:</strong>
+                    <ul>
+                      <li>Gold datasets drive operational dashboards, billing, forecasting, etc.</li>
+                      <li>Strategic KPIs mapped to curated tables.</li>
+                      <li>C4E enables business team adoption of governed pipelines.</li>
+                    </ul>
+                  </li>
+                </ul>
+
+                <hr />
+
+                <h3><strong>Level 4: Proactive</strong></h3>
+                <ul>
+                  <li><strong>Data:</strong>
+                    <ul>
+                      <li>Data contracts enforced via DLT expectations.</li>
+                      <li>Astronomer Observe monitors DAG health, freshness, and lineage.</li>
+                      <li>Metadata and classifications drive downstream use and policy enforcement.</li>
+                    </ul>
+                  </li>
+                  <li><strong>AI:</strong>
+                    <ul>
+                      <li>Feature store is standardized, versioned, and reused.</li>
+                      <li>Model governance processes (review boards, risk assessments) in place.</li>
+                      <li>Monitoring of model drift, performance, and explainability integrated.</li>
+                    </ul>
+                  </li>
+                  <li><strong>Business:</strong>
+                    <ul>
+                      <li>AI is used in production to optimize campaigns, pricing, churn reduction.</li>
+                      <li>Business units trust and understand AI outputs via traceable lineage and quality indicators.</li>
+                    </ul>
+                  </li>
+                </ul>
+
+                <hr />
+
+                <h3><strong>Level 5: Strategic &amp; Adaptive</strong></h3>
+                <ul>
+                  <li><strong>Data:</strong>
+                    <ul>
+                      <li>DataOps teams operate as internal product teams.</li>
+                      <li>Real-time pipelines support low-latency decisioning.</li>
+                      <li>Full cost, usage, and impact metrics guide data investments.</li>
+                    </ul>
+                  </li>
+                  <li><strong>AI:</strong>
+                    <ul>
+                      <li>Continuous delivery of models with retraining, drift response, and ethical oversight.</li>
+                      <li>AI usage embedded in operational processes and customer experiences.</li>
+                    </ul>
+                  </li>
+                  <li><strong>Business:</strong>
+                    <ul>
+                      <li>Executive dashboards fed by real-time gold-layer data tied directly to P&amp;L levers.</li>
+                      <li>New revenue streams emerge from AI-powered services/products.</li>
+                    </ul>
+                  </li>
+                </ul>
+
+                <hr />
+
+                <h2><strong>Summary: DataOps as the Bridge to AI</strong></h2>
+                <br />
+                <br />
+
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Goal</th>
+                      <th>DataOps Capability</th>
+                      <th>AI Outcome</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><strong>Trust</strong></td>
+                      <td>Lineage + Quality + SLAs via Airflow + DLT</td>
+                      <td>Reliable AI outputs, audit readiness</td>
+                    </tr>
+                    <tr>
+                      <td><strong>Speed to Value</strong></td>
+                      <td>Orchestrated ingestion + unified gold layer</td>
+                      <td>Faster model development &amp; iteration</td>
+                    </tr>
+                    <tr>
+                      <td><strong>Governance</strong></td>
+                      <td>Unity Catalog + policy enforcement</td>
+                      <td>Responsible AI at scale</td>
+                    </tr>
+                    <tr>
+                      <td><strong>Access</strong></td>
+                      <td>Self-service + C4E enablement</td>
+                      <td>Cross-functional AI usage</td>
+                    </tr>
+                    <tr>
+                      <td><strong>Scalability</strong></td>
+                      <td>Modular DAGs, Delta Lake, feature store</td>
+                      <td>Reusable, composable ML assets</td>
+                    </tr>
+                    <tr>
+                      <td><strong>Business Alignment</strong></td>
+                      <td>Gold datasets tied to KPIs</td>
+                      <td>Measurable AI-driven business outcomes</td>
+                    </tr>
+                  </tbody>
+                </table>
+
+
+              </div>
+              <div id="grid-container"></div>
+            </div>
+            <br />
+            <div id="submenu" style="width:100%"></div>
+          <script>
+          menu()
+          pageContent()
+          </script>
+
+          <hr>
+          <p><center>&copy; 2025 Airbrx | <a href="/contact.html">Contact Us</a></center></p>
+          <br />
+</body>
