@@ -21,7 +21,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 </head>
 <body>
-
   <button id="menu-toggle" aria-label="Toggle Menu">&#9776;</button>
   <div style="width:100%">
   <header onclick="window.location.href='/'" style="cursor:pointer">
@@ -190,36 +189,74 @@
     <script>
       menu()
       pageContent()
-        // Initialize tippy on all .tooltip elements with HTML content
-        tippy('.tooltip', {
-          content(reference) {
-            return reference.getAttribute('data-tooltip-html');
-          },
-          allowHTML: true,
-          interactive: true,
-          trigger: 'mouseenter focus click', // allows mobile tap
-          placement: 'top',
-        })
-        fetch('/assets/tooltips.json')  // adjust to correct path
-          .then(response => response.json())
-          .then(tips => {
-            document.querySelectorAll('.tooltip').forEach(el => {
-              const key = el.getAttribute('data-key');
-              const content = tips[key] || 'No tooltip found';
 
-              tippy(el, {
-                content,
-                allowHTML: true,
-                interactive: true,
-                trigger: 'mouseenter focus click',
-                placement: 'top'
-              });
+      // Initialize tippy on all .tooltip elements with HTML content
+      fetch('/assets/tooltips.json') 
+        .then(response => response.json())
+        .then(tips => {
+          document.querySelectorAll('.tooltip').forEach(el => {
+            const key = el.getAttribute('data-key');
+            const content = tips[key] || 'No tooltip found';
+
+            tippy(el, {
+              content,
+              allowHTML: true,
+              interactive: true,
+              trigger: 'mouseenter focus click',
+              placement: 'top',
+              appendTo: document.body,
+              popperOptions: {
+                modifiers: [
+                  {
+                    name: 'flip',
+                    options: {
+                      fallbackPlacements: [], // disables flipping
+                    },
+                  },
+                  {
+                    name: 'preventOverflow',
+                    options: {
+                      boundary: 'window',
+                    },
+                  },
+                ],
+              },
             });
           });
+        });
+
 
     </script>
 
     <hr>
     <p><center>&copy; 2025 Airbrx | <a href="/contact.html">Contact Us</a></center></p>
     <br />
+    <a href="#top" id="backToTop" style="
+      display: none;
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #fd6c1d;
+      color: white;
+      padding: 10px 14px;
+      border-radius: 6px;
+      font-size: 14px;
+      text-decoration: none;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+      z-index: 100000;
+    ">↑ Top</a>
+
+    <script>
+      const backToTop = document.getElementById("backToTop");
+      const menuloc = document.getElementById("menu");
+
+      window.addEventListener("scroll", () => {
+        const menuBottom = menuloc.offsetTop + menuloc.offsetHeight;
+        if (window.scrollY > menuBottom) {
+          backToTop.style.display = "block";
+        } else {
+          backToTop.style.display = "none";
+        }
+      });
+    </script>
 </body>
